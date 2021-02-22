@@ -1,0 +1,22 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "",
+    "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bananabread08/todolist.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bananabread08/todolist/issues"
+  },
+  "homepage": "https://github.com/bananabread08/todolist#readme",
+  "devDependencies": {
+    "webpack-cli": "^4.5.0"
+  }
+}
