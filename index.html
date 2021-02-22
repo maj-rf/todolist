@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
+    <title>To-do List</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-nav">
+            <div class="form-popup" id="project">
+                <form class="form-container" id="project-form" >
+                    <div class="form-input">
+                        <input type="text" placeholder="Project Title.." id="project=title">
+                    </div>
+                    <div class="form-input"> 
+                        <input type="submit" id="project-submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+            <div class="form-popup" id="to-do">
+                <form class="form-container" id="todo-form" >
+                    <div class="form-input">
+                        <input type="text" placeholder="To-do Title.." id="todo-title">
+                    </div>
+                    <div class="form-input">
+                        <input type="text" placeholder="Description.." id="todo-desc">
+                    </div>
+                    <div class="form-input">
+                        <input type="date" id="todo-date">
+                    </div>
+                    <div class="form-input"> 
+                        <input type="submit" id="to-do-submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="content">
+            <div>Project</div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
