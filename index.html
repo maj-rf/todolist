@@ -11,17 +11,17 @@
 <body>
     <div class="main-container">
         <div class="left-nav">
-            <div class="form-popup" id="project">
+            <div id="project">
                 <form class="form-container" id="project-form" >
                     <div class="form-input">
-                        <input type="text" placeholder="Project Title.." id="project=title">
+                        <input type="text" placeholder="Project Name.." id="project-name">
                     </div>
                     <div class="form-input"> 
-                        <input type="submit" id="project-submit" value="Submit">
+                        <input type="submit" id="project-submit" value="Add New Project">
                     </div>
                 </form>
             </div>
-            <div class="form-popup" id="to-do">
+            <div id="to-do">
                 <form class="form-container" id="todo-form" >
                     <div class="form-input">
                         <input type="text" placeholder="To-do Title.." id="todo-title">
@@ -33,13 +33,20 @@
                         <input type="date" id="todo-date">
                     </div>
                     <div class="form-input"> 
-                        <input type="submit" id="to-do-submit" value="Submit">
+                        <input type="submit" id="todo-submit" value="Add New To-do">
                     </div>
                 </form>
             </div>
+            <div class="projectname-cont">
+                <ul class="project-list">
+                    <li id="project1">Project</li>
+                </ul>
+            </div>
         </div>
         <div class="content">
-            <div>Project</div>
+            <ul id="project">
+                Project
+            </ul>
         </div>
     </div>
     <script src="main.js"></script>
