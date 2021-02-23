@@ -10,33 +10,43 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/constructor.js":
+/*!****************************!*\
+  !*** ./src/constructor.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Project\": () => (/* binding */ Project),\n/* harmony export */   \"Todos\": () => (/* binding */ Todos)\n/* harmony export */ });\nclass Project {\n    constructor(name){\n        this.projName = name;\n        this.todolist = []; //array of todos\n    }\n}\n\nclass Todos {\n    constructor(title, desc, dueDate){\n        this.title = title;\n        this.desc = desc;\n        this.dueDate = dueDate;\n        this.isDone = false;\n        // this.isRemoved = false; //trash icon\n    }\n}\n\n//# sourceURL=webpack://todolist/./src/constructor.js?");
+
+/***/ }),
+
+/***/ "./src/display.js":
+/*!************************!*\
+  !*** ./src/display.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom */ \"./src/dom.js\");\n\n\nconst updateNav = (proj) =>{\n    const projectLi = document.createElement(\"li\");\n    projectLi.innerHTML = `<button>${proj.projName}</button>`;\n    projectLi.classList.add(\"project-btns\");\n    _dom__WEBPACK_IMPORTED_MODULE_0__.projNav.appendChild(projectLi);\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (updateNav);\n\n//# sourceURL=webpack://todolist/./src/display.js?");
+
+/***/ }),
+
+/***/ "./src/dom.js":
+/*!********************!*\
+  !*** ./src/dom.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"projList\": () => (/* binding */ projList),\n/* harmony export */   \"todoList\": () => (/* binding */ todoList),\n/* harmony export */   \"projNav\": () => (/* binding */ projNav)\n/* harmony export */ });\n/* harmony import */ var _constructor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constructor */ \"./src/constructor.js\");\n/* harmony import */ var _display__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./display */ \"./src/display.js\");\n\n\n\nconst todoList = [{title: \"Buy\", desc: \"Apple Juice\", dueDate: \"12/24/2020\"}]; //default Todo in Default TodoList\nconst projList = [{projName : \"Default Project\", todoList}]; //default Proj in ProjArray\n//const form = document.getElementById(\"todo-form\");\nconst projForm = document.getElementById(\"project-form\");\nconst projNav = document.querySelector(\".project-list\");\n\n// const addTodo = (e) =>{\n//     e.preventDefault();\n//     const title = document.getElementById(\"todo-title\").value; //get values\n//     const desc = document.getElementById(\"todo-desc\").value;\n//     const date = document.getElementById(\"todo-date\").value;\n\n//     if (title.length === 0 || desc.length === 0 || date.length === 0) {\n//         alert(\"Please, fill all the fields\");\n//         return;\n//     }\n//     const newTodo = new Todos(title, desc, date);\n//     todoList.push(newTodo);\n//     form.reset(); //reset text fields\n// }\n\nconst addProject = (e) =>{\n    e.preventDefault();\n    const name = document.getElementById(\"project-name\").value;\n    if (name.length === 0){\n        alert(\"Project name is empty, please do not submit blanks!\");\n        return;\n    }\n    const newProj = new _constructor__WEBPACK_IMPORTED_MODULE_0__.Project(name); //create new Books using the constructor\n    projList.push(newProj);\n    (0,_display__WEBPACK_IMPORTED_MODULE_1__.default)(newProj);\n    projForm.reset(); //reset text fields\n}\n\n//form.addEventListener(\"submit\", addTodo);\nprojForm.addEventListener(\"submit\", addProject);\n\n\n\n//# sourceURL=webpack://todolist/./src/dom.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/dom */ \"./src/modules/dom.js\");\n\n\nconsole.log(_modules_dom__WEBPACK_IMPORTED_MODULE_0__.projList);\nconsole.log(_modules_dom__WEBPACK_IMPORTED_MODULE_0__.todoList);\n\n\n//# sourceURL=webpack://todolist/./src/index.js?");
-
-/***/ }),
-
-/***/ "./src/modules/constructor.js":
-/*!************************************!*\
-  !*** ./src/modules/constructor.js ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Project\": () => (/* binding */ Project),\n/* harmony export */   \"Todos\": () => (/* binding */ Todos)\n/* harmony export */ });\nclass Project {\n    constructor(name){\n        this.projName = name;\n        this.todolist = []; //array of todos\n    }\n}\n\nclass Todos {\n    constructor(title, desc, dueDate){\n        this.title = title;\n        this.desc = desc;\n        this.dueDate = dueDate;\n        this.isDone = false;\n        // this.isRemoved = false; //trash icon\n    }\n}\n\n//# sourceURL=webpack://todolist/./src/modules/constructor.js?");
-
-/***/ }),
-
-/***/ "./src/modules/dom.js":
-/*!****************************!*\
-  !*** ./src/modules/dom.js ***!
-  \****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"projList\": () => (/* binding */ projList),\n/* harmony export */   \"todoList\": () => (/* binding */ todoList)\n/* harmony export */ });\n/* harmony import */ var _constructor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constructor */ \"./src/modules/constructor.js\");\n\n\nconst todoList = [{title: \"Buy\", desc: \"Apple Juice\", dueDate: \"12/24/2020\"}]; //default Todo in Default TodoList\nconst projList = [{projName : \"Default Project\", todoList}]; //default Proj in ProjArray\nconst form = document.getElementById(\"todo-form\");\nconst projForm = document.getElementById(\"project-form\");\n\nconst addTodo = (e) =>{\n    e.preventDefault();\n    const title = document.getElementById(\"todo-title\").value; //get values\n    const desc = document.getElementById(\"todo-desc\").value;\n    const date = document.getElementById(\"todo-date\").value;\n\n    if (title.length === 0 || desc.length === 0 || date.length === 0) {\n        alert(\"Please, fill all the fields\");\n        return;\n    }\n    const newTodo = new _constructor__WEBPACK_IMPORTED_MODULE_0__.Todos(title, desc, date); //create new Books using the constructor\n    todoList.push(newTodo);\n    form.reset(); //reset text fields\n}\n\nconst addProject = (e) =>{\n    e.preventDefault();\n    const name = document.getElementById(\"project-name\").value;\n    if (name.length === 0){\n        alert(\"Project name is empty, please do not submit blanks!\");\n        return;\n    }\n    const newProj = new _constructor__WEBPACK_IMPORTED_MODULE_0__.Project(name); //create new Books using the constructor\n    projList.push(newProj);\n    projForm.reset(); //reset text fields\n}\n\nform.addEventListener(\"submit\", addTodo);\nprojForm.addEventListener(\"submit\", addProject);\n\n\n\n//# sourceURL=webpack://todolist/./src/modules/dom.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom */ \"./src/dom.js\");\n\n\nconsole.log(_dom__WEBPACK_IMPORTED_MODULE_0__.projList);\nconsole.log(_dom__WEBPACK_IMPORTED_MODULE_0__.todoList);\n\n\n//# sourceURL=webpack://todolist/./src/index.js?");
 
 /***/ })
 
