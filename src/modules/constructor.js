@@ -1,6 +1,8 @@
+//module for Classes
 export class Project {
-    constructor(name){
-        this.projName = name;
+    constructor(name, id){
+        this.name = name;
+        this.id = id;
         this.todolist = []; //array of todos
     }
 }

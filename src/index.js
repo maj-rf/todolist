@@ -1,4 +1,4 @@
-import {projList, todoList} from './dom';
+import render from './modules/display';
 
-console.log(projList);
-console.log(todoList);
+//entry point
+render();
