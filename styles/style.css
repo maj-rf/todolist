@@ -20,6 +20,14 @@ html,body{
     align-items: center;
     justify-content: center;
 }
+.project-ul li{
+    list-style-type: none;
+}
+.project-ul li:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
 .content{
     width: 70%;
     display: flex;
