@@ -9,28 +9,66 @@
     <title>To-do List</title>
 </head>
 <body>
-    <div class="main-container">
-        <div class="left-nav">
-            <div id="project">
-                <form class="form-container" id="project-form" >
-                    <div class="form-input">
-                        <input type="text" placeholder="Project Name.." id="pname-input">
-                    </div>
-                    <div class="form-input"> 
-                        <input type="submit" id="project-submit" value="Add New Project">
-                    </div>
-                </form>
-            </div>
-            <div class="projectlist-cont">
-                <h2> My Projects </h2>
-                <ul class="project-ul">
-                </ul>
-            </div>
+    <div class="left-nav">
+        <div class="project-form-cont">
+            <form class="form-container" id="project-form" >
+                <div class="form-input">
+                    <input type="text" placeholder="Project Name.." id="pname-input">
+                </div>
+                <div class="form-input"> 
+                    <input type="submit" id="project-submit" value="+">
+                </div>
+            </form>
         </div>
-        <div class="content">
-            
+        <div class="projectlist-cont">
+            <h2> My Projects </h2>
+            <ul class="project-ul">
+            </ul>
         </div>
     </div>
+    <div class="content" data-project-display-container>
+        <div class="todo-header">
+            <h2 class="list-title" data-project-title>YouTube</h2>
+            <p class="task-count" data-project-count>3 Todos remaining</p>
+        </div>
+      
+        <div class="todo-body">
+            <div class="new-task-creator">
+                <form action="" data-new-task-form>
+                    <input 
+                    type="text"
+                    data-new-task-input
+                    class="new task"
+                    placeholder="new todo"
+                    />
+                    <input 
+                    type="text" 
+                    data-new-todo-desc
+                    class="new desc"
+                    placeholder="Description" >
+                    </div>
+                    <label>Due Date:</label>
+                    <input 
+                    type="date" 
+                    data-new-todo-duedate
+                    class="new date">
+                    </div>
+                    <button class="btn create">+</button>
+                </form>
+            <div class="tasks" data-tasks></div>
+            <div class="delete-stuff">
+                <button class="btn delete" data-delete-list-button>Delete list</button>
+              </div>
+            </div>   
+        </div>
+    <template id="task-template">
+        <div class="task">
+          <!-- <input type="checkbox" /> -->
+          <label>
+            <span class="custom-checkbox"></span>
+          </label>
+        </div>
+      </template>
     <script src="main.js"></script>
 </body>
 </html>
