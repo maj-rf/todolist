@@ -8,9 +8,12 @@ html,body{
 *::after, *::before{
     box-sizing :border-box;
 }
-.main-container{
-    width: 100%;
-    margin: 0 auto;
+.form-container{
+    display: flex;
+    flex-direction: row;
+}
+.form-container #project-submit{
+    padding: 5px;
 }
 .left-nav{
     width: 30%;
@@ -22,11 +25,15 @@ html,body{
 }
 .project-ul li{
     list-style-type: none;
+    border: 1px solid gray;
 }
 .project-ul li:hover{
     background-color: black;
     color: white;
     cursor: pointer;
+}
+.active-project{
+    font-weight: 700;
 }
 .content{
     width: 70%;
@@ -35,5 +42,10 @@ html,body{
     float:right;
     align-items: center;
     justify-content: center;
+}
+
+.todo-body form{
+    display: flex;
+    flex-direction: column;
 }
 
