@@ -28,8 +28,7 @@
     </div>
     <div class="content" data-project-display-container>
         <div class="todo-header">
-            <h2 class="list-title" data-project-title>YouTube</h2>
-            <p class="task-count" data-project-count>3 Todos remaining</p>
+            <h2 class="list-title" data-project-title>To Watch</h2>
         </div>
       
         <div class="todo-body">
@@ -39,31 +38,32 @@
                     type="text"
                     data-new-task-input
                     class="new task"
-                    placeholder="new todo"
+                    placeholder="Add New To-Do..."
                     />
                     <input 
                     type="text" 
                     data-new-todo-desc
                     class="new desc"
-                    placeholder="Description" >
+                    placeholder="Description..." >
                     </div>
                     <label>Due Date:</label>
                     <input 
                     type="date" 
                     data-new-todo-duedate
-                    class="new date">
+                    class="new date"
+                    id="date">
                     </div>
                     <button class="btn create">+</button>
                 </form>
-            <div class="tasks" data-tasks></div>
             <div class="delete-stuff">
                 <button class="btn delete" data-delete-list-button>Delete list</button>
-              </div>
+            </div>
+            <div class="tasks" data-tasks></div>
             </div>   
         </div>
     <template id="task-template">
         <div class="task">
-          <!-- <input type="checkbox" /> -->
+          <input class="checker" type="checkbox" />
           <label>
             <span class="custom-checkbox"></span>
           </label>
