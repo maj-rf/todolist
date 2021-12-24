@@ -1,74 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-do List</title>
-</head>
-<body>
-    <div class="left-nav">
-        <div class="project-form-cont">
-            <form class="form-container" id="project-form" >
-                <div class="form-input">
-                    <input type="text" placeholder="Project Name.." id="pname-input">
-                </div>
-                <div class="form-input"> 
-                    <input type="submit" id="project-submit" value="+">
-                </div>
-            </form>
-        </div>
-        <div class="projectlist-cont">
-            <h2> My Projects </h2>
-            <ul class="project-ul">
-            </ul>
-        </div>
-    </div>
-    <div class="content" data-project-display-container>
-        <div class="todo-header">
-            <h2 class="list-title" data-project-title>To Watch</h2>
-        </div>
-      
-        <div class="todo-body">
-            <div class="new-task-creator">
-                <form action="" data-new-task-form>
-                    <input 
-                    type="text"
-                    data-new-task-input
-                    class="new task"
-                    placeholder="Add New To-Do..."
-                    />
-                    <input 
-                    type="text" 
-                    data-new-todo-desc
-                    class="new desc"
-                    placeholder="Description..." >
-                    </div>
-                    <label>Due Date:</label>
-                    <input 
-                    type="date" 
-                    data-new-todo-duedate
-                    class="new date"
-                    id="date">
-                    </div>
-                    <button class="btn create">+</button>
-                </form>
-            <div class="delete-stuff">
-                <button class="btn delete" data-delete-list-button>Delete list</button>
-            </div>
-            <div class="tasks" data-tasks></div>
-            </div>   
-        </div>
-    <template id="task-template">
-        <div class="task">
-          <input class="checker" type="checkbox" />
-          <label>
-            <span class="custom-checkbox"></span>
-          </label>
-        </div>
-      </template>
+  </head>
+  <body>
+    <header>Hello, World!</header>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>
