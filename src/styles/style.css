@@ -16,3 +16,7 @@ body {
 header {
   color: blue;
 }
+
+.project-form {
+  display: flex;
+}
