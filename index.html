@@ -10,13 +10,42 @@
     <header>Hello, World!</header>
     <form class="project-form">
       <div class="project-form-input">
-        <input type="text" placeholder="Project Name.." class="pname-input" />
+        <input
+          type="text"
+          placeholder="Add a New Project.."
+          class="pname-input"
+        />
       </div>
       <div class="project-form-input">
-        <input type="submit" class="project-submit" value="+" />
+        <input type="submit" class="project-submit" value="Add" />
       </div>
     </form>
+    <label for="project-container">Projects:</label>
     <section class="project-container"></section>
+    <section class="todolist-container">
+      <form>
+        <div class="todo-form-input">
+          <input
+            type="text"
+            placeholder="Todo Name.."
+            class="todo-name-input"
+          />
+        </div>
+        <div class="todo-form-input">
+          <input
+            type="text"
+            placeholder="Description.."
+            class="todo-desc-input"
+          />
+        </div>
+        <div class="todo-form-input">
+          <input type="date" class="todo-duedate-input" />
+        </div>
+        <div class="todo-form-input">
+          <input type="submit" class="todo-submit" value="Add Todo" />
+        </div>
+      </form>
+    </section>
     <script src="main.js"></script>
   </body>
 </html>
