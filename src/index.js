@@ -7,14 +7,39 @@ let today = new Date().toISOString().split('T')[0];
 document
   .getElementsByClassName('todo-duedate-input')[0]
   .setAttribute('min', today); //set min date to current date.
-
 const projects = [
   {
     name: 'Default List',
-    id: 'asdf12345',
-    todolist: ['buy bread', 'read book'],
+    id: uniqid(),
+    todolist: [
+      {
+        title: 'Groceries',
+        desc: 'Buy tomato, buy orange, buy milk',
+        duedate: new Date(),
+        complete: false,
+      },
+      {
+        title: 'Read Books',
+        desc: 'Noli Me Tangere + El Filibusterismo',
+        duedate: new Date(),
+        complete: false,
+      },
+    ],
+  },
+  {
+    name: 'Another List',
+    id: uniqid(),
+    todolist: [
+      {
+        title: 'Walk Chichi',
+        desc: 'Go walk my dog and meet other people',
+        duedate: new Date(),
+        complete: false,
+      },
+    ],
   },
 ];
+let currentID = projects[0].id;
 
 const clearChildElements = (element) => {
   while (element.firstChild) {
@@ -25,6 +50,7 @@ const clearChildElements = (element) => {
 const renderProjects = (projects) => {
   const projectsEl = document.querySelector('.project-container');
   clearChildElements(projectsEl);
+  console.log(projects);
   projects.forEach((project) => {
     const div = document.createElement('div');
     div.textContent = `${project.name}`;
@@ -42,6 +68,26 @@ const addProject = (e) => {
   form.reset();
 };
 
+const renderTodos = (currentID) => {
+  const todoContainer = document.querySelector('.todo-container');
+  const selectedProject = projects.find((project) => project.id === currentID);
+  clearChildElements(todoContainer);
+
+  selectedProject.todolist.forEach((todo) => {
+    const item = document.createElement('div');
+    const name = document.createElement('div');
+    const desc = document.createElement('div');
+    const duedate = document.createElement('div');
+    const complete = document.createElement('div');
+    name.textContent = `Title: ${todo.title}`;
+    desc.textContent = `Description: ${todo.desc}`;
+    duedate.textContent = `Due: ${todo.duedate}`;
+    complete.textContent = `Done?: ${todo.complete}`;
+    item.append(name, desc, duedate, complete);
+    todoContainer.append(item);
+  });
+};
+
 form.addEventListener('submit', addProject);
 renderProjects(projects); // initial render
-//renderTodolist(currentID)
+renderTodos(currentID);
