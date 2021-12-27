@@ -3,8 +3,18 @@ import uniqid from 'uniqid';
 import './styles/style.css';
 
 const form = document.querySelector('.project-form');
+let today = new Date().toISOString().split('T')[0];
+document
+  .getElementsByClassName('todo-duedate-input')[0]
+  .setAttribute('min', today); //set min date to current date.
 
-const projects = [];
+const projects = [
+  {
+    name: 'Default List',
+    id: 'asdf12345',
+    todolist: ['buy bread', 'read book'],
+  },
+];
 
 const clearChildElements = (element) => {
   while (element.firstChild) {
@@ -33,3 +43,5 @@ const addProject = (e) => {
 };
 
 form.addEventListener('submit', addProject);
+renderProjects(projects); // initial render
+//renderTodolist(currentID)
