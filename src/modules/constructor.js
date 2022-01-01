@@ -25,9 +25,9 @@ export class Project {
 
 export class Todos {
   constructor(title, desc, dueDate) {
-    this.title = title;
-    this.desc = desc;
-    this.dueDate = dueDate;
-    this.complete = false;
+    this._title = title;
+    this._desc = desc;
+    this._dueDate = dueDate;
+    this._status = false;
   }
 }

@@ -8,8 +8,8 @@ body {
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -17,6 +17,17 @@ header {
   color: blue;
 }
 
+button,
+input[type='submit'] {
+  cursor: pointer;
+}
+
 .project-form {
   display: flex;
+}
+
+.project-container > *:hover {
+  background-color: burlywood;
+  border: 0.5px solid black;
+  cursor: pointer;
 }
