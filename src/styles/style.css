@@ -31,3 +31,7 @@ input[type='submit'] {
   border: 0.5px solid black;
   cursor: pointer;
 }
+
+.project-container > *.active {
+  background-color: blue;
+}

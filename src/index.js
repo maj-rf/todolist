@@ -8,7 +8,8 @@ document
   .getElementsByClassName('todo-duedate-input')[0]
   .setAttribute('min', today); //set min date to current date.
 
-const projects = [
+// ### Default Projects with respective Todolist
+const currentProjects = [
   {
     name: 'Default List',
     id: uniqid(),
@@ -41,7 +42,9 @@ const projects = [
   },
 ];
 
-let currentID = projects[0].id;
+let currentID = currentProjects[0].id;
+
+// ### Render && Clear Stuff
 
 const clearChildElements = (element) => {
   while (element.firstChild) {
@@ -52,7 +55,7 @@ const clearChildElements = (element) => {
 const renderProjects = (projects) => {
   const projectsEl = document.querySelector('.project-container');
   clearChildElements(projectsEl);
-  console.log(projects);
+  //console.log(projects);
   projects.forEach((project) => {
     const pEl = document.createElement('p');
     pEl.setAttribute('id', project.id);
@@ -61,24 +64,21 @@ const renderProjects = (projects) => {
   });
 };
 
-const addProject = (e) => {
-  e.preventDefault();
-  const projectName = document.querySelector('.pname-input').value;
-  if (projectName == null || projectName === '') return;
-  const newProject = new Project(projectName, uniqid());
-  projects.push(newProject);
-  renderProjects(projects);
-  form.reset();
-};
-
 const renderTodos = (currentID) => {
-  let current = projects.find((project) => project.id === currentID);
-  console.log(`you are in ${current.name}`); // current project Checker
+  console.log(
+    `you are in ${
+      currentProjects.find((project) => project.id === currentID).name
+    }`
+  ); // current project Checker
   const todoContainer = document.querySelector('.todo-container');
-  const selectedProject = projects.find((project) => project.id === currentID);
+  const title = document.createElement('h3');
+  const selectedProject = currentProjects.find(
+    (project) => project.id === currentID
+  );
   clearChildElements(todoContainer);
+  title.textContent = selectedProject.name;
+  todoContainer.append(title);
   if (selectedProject.todolist === undefined) return; //ignores blank new todolist
-
   selectedProject.todolist.forEach((todo) => {
     const item = document.createElement('div');
     const name = document.createElement('div');
@@ -94,12 +94,25 @@ const renderTodos = (currentID) => {
   });
 };
 
-form.addEventListener('submit', addProject);
-document
-  .querySelector('.project-container')
-  .addEventListener('click', (e) =>
-    e.target.nodeName === 'P' ? renderTodos(e.target.id) : ''
-  );
+// ### Add Stuff
+const addProject = (e) => {
+  e.preventDefault();
+  const projectName = document.querySelector('.pname-input').value;
+  if (projectName == null || projectName === '') return;
+  const newProject = new Project(projectName, uniqid());
+  currentProjects.push(newProject);
+  console.log(newProject.id);
+  renderProjects(currentProjects);
+  renderTodos(newProject.id);
+  form.reset();
+};
 
-renderProjects(projects); // initial render
+// ### Events
+form.addEventListener('submit', addProject);
+document.querySelector('.project-container').addEventListener('click', (e) => {
+  e.target.nodeName === 'P' ? renderTodos(e.target.id) : '';
+});
+
+// ### Initial Render
+renderProjects(currentProjects);
 renderTodos(currentID);
