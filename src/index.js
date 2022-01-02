@@ -57,10 +57,15 @@ const renderProjects = (projects) => {
   clearChildElements(projectsEl);
   //console.log(projects);
   projects.forEach((project) => {
+    const projCard = document.createElement('div');
     const pEl = document.createElement('p');
+    const deleteIcon = document.createElement('i');
+    projCard.classList.add('project-card');
     pEl.setAttribute('id', project.id);
     pEl.textContent = `${project.name}`;
-    projectsEl.append(pEl);
+    deleteIcon.classList.add('fas', 'fa-minus-circle');
+    projCard.append(pEl, deleteIcon);
+    projectsEl.append(projCard);
   });
 };
 
@@ -94,23 +99,35 @@ const renderTodos = (currentID) => {
   });
 };
 
-// ### Add Stuff
+// ### Add && Remove Stuff
 const addProject = (e) => {
   e.preventDefault();
   const projectName = document.querySelector('.pname-input').value;
   if (projectName == null || projectName === '') return;
   const newProject = new Project(projectName, uniqid());
   currentProjects.push(newProject);
-  console.log(newProject.id);
   renderProjects(currentProjects);
   renderTodos(newProject.id);
   form.reset();
 };
 
+const deleteProject = (e) => {
+  e.preventDefault();
+  const todoContainer = document.querySelector('.todo-container');
+  let index = currentProjects.findIndex(
+    (proj) => proj.id === e.target.previousElementSibling.id
+  );
+  currentProjects.splice(index, 1);
+  renderProjects(currentProjects);
+  if (currentProjects[0] === undefined)
+    return clearChildElements(todoContainer);
+  renderTodos(currentProjects[0].id);
+};
 // ### Events
 form.addEventListener('submit', addProject);
 document.querySelector('.project-container').addEventListener('click', (e) => {
-  e.target.nodeName === 'P' ? renderTodos(e.target.id) : '';
+  if (e.target.nodeName === 'P') renderTodos(e.target.id);
+  if (e.target.nodeName === 'I') deleteProject(e);
 });
 
 // ### Initial Render

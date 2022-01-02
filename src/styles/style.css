@@ -18,7 +18,8 @@ header {
 }
 
 button,
-input[type='submit'] {
+input[type='submit'],
+i {
   cursor: pointer;
 }
 
@@ -26,12 +27,22 @@ input[type='submit'] {
   display: flex;
 }
 
-.project-container > *:hover {
+.project-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.project-card > p:hover {
   background-color: burlywood;
-  border: 0.5px solid black;
   cursor: pointer;
 }
+.project-card > i {
+  color: brown;
+}
+.project-card > i:hover {
+  color: red;
+}
 
-.project-container > *.active {
-  background-color: blue;
+.todo-container > * {
+  margin-bottom: 10px;
 }
