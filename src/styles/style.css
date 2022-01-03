@@ -36,10 +36,10 @@ i {
   background-color: burlywood;
   cursor: pointer;
 }
-.project-card > i {
+.fas {
   color: brown;
 }
-.project-card > i:hover {
+.fas:hover {
   color: red;
 }
 

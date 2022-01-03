@@ -27,7 +27,39 @@ export class Todos {
   constructor(title, desc, dueDate) {
     this._title = title;
     this._desc = desc;
-    this._dueDate = dueDate;
+    this._duedate = dueDate;
     this._status = false;
+  }
+
+  get title() {
+    return this._title;
+  }
+
+  set title(todoName) {
+    return (this._title = todoName);
+  }
+
+  get desc() {
+    return this._desc;
+  }
+
+  set desc(todoDesc) {
+    return (this._desc = todoDesc);
+  }
+
+  get duedate() {
+    return this._duedate;
+  }
+
+  set duedate(todoDuedate) {
+    return (this._duedate = todoDuedate);
+  }
+
+  get status() {
+    return this._status;
+  }
+
+  set status(stat) {
+    return (this._status = !stat);
   }
 }

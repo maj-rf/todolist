@@ -8,6 +8,9 @@ document
   .getElementsByClassName('todo-duedate-input')[0]
   .setAttribute('min', today); //set min date to current date.
 
+document.getElementsByClassName('todo-duedate-input')[0].valueAsDate =
+  new Date(); // set dafault date to today.
+
 // ### Default Projects with respective Todolist
 const currentProjects = [
   {
@@ -18,13 +21,13 @@ const currentProjects = [
         title: 'Groceries',
         desc: 'Buy tomato, buy orange, buy milk',
         duedate: new Date(),
-        complete: false,
+        status: false,
       },
       {
         title: 'Read Books',
         desc: 'Noli Me Tangere + El Filibusterismo',
         duedate: new Date(),
-        complete: false,
+        status: false,
       },
     ],
   },
@@ -36,7 +39,7 @@ const currentProjects = [
         title: 'Walk Chichi',
         desc: 'Go walk my dog and meet other people',
         duedate: new Date(),
-        complete: false,
+        status: false,
       },
     ],
   },
@@ -89,12 +92,14 @@ const renderTodos = (currentID) => {
     const name = document.createElement('div');
     const desc = document.createElement('div');
     const duedate = document.createElement('div');
-    const complete = document.createElement('div');
+    const status = document.createElement('div');
+    const deleteIcon = document.createElement('i');
     name.textContent = `Title: ${todo.title}`;
     desc.textContent = `Description: ${todo.desc}`;
     duedate.textContent = `Due: ${todo.duedate}`;
-    complete.textContent = `Done?: ${todo.complete}`;
-    item.append(name, desc, duedate, complete);
+    status.textContent = `Done?: ${todo.status}`;
+    deleteIcon.classList.add('fas', 'fa-minus-circle');
+    item.append(name, desc, duedate, status, deleteIcon);
     todoContainer.append(item);
   });
 };
@@ -105,6 +110,7 @@ const addProject = (e) => {
   const projectName = document.querySelector('.pname-input').value;
   if (projectName == null || projectName === '') return;
   const newProject = new Project(projectName, uniqid());
+  currentID = newProject.id;
   currentProjects.push(newProject);
   renderProjects(currentProjects);
   renderTodos(newProject.id);
@@ -119,16 +125,42 @@ const deleteProject = (e) => {
   );
   currentProjects.splice(index, 1);
   renderProjects(currentProjects);
-  if (currentProjects[0] === undefined)
+  if (currentProjects[0] === undefined) {
+    currentID = null;
     return clearChildElements(todoContainer);
+  }
   renderTodos(currentProjects[0].id);
+  currentID = currentProjects[0].id;
+};
+
+const addTodo = (e) => {
+  e.preventDefault();
+  const todoName = document.querySelector('.todo-name-input').value;
+  const todoDesc = document.querySelector('.todo-desc-input').value;
+  const todoDate = document.querySelector('.todo-duedate-input').value;
+  const newTodo = new Todos(todoName, todoDesc, todoDate);
+  if (todoName === '' || todoDesc === '' || todoDate === '') return;
+  currentProjects.map((obj) =>
+    obj.id === currentID
+      ? {
+          ...obj,
+          todolist: [],
+          todolist: obj.todolist.push(newTodo),
+        }
+      : obj
+  );
+  renderTodos(currentID);
 };
 // ### Events
 form.addEventListener('submit', addProject);
 document.querySelector('.project-container').addEventListener('click', (e) => {
-  if (e.target.nodeName === 'P') renderTodos(e.target.id);
+  if (e.target.nodeName === 'P') {
+    renderTodos(e.target.id);
+    currentID = e.target.id;
+  }
   if (e.target.nodeName === 'I') deleteProject(e);
 });
+document.querySelector('.todo-form').addEventListener('submit', addTodo);
 
 // ### Initial Render
 renderProjects(currentProjects);
