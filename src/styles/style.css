@@ -12,9 +12,55 @@ body {
 *::after {
   box-sizing: inherit;
 }
+.burger {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  background-color: black;
+  cursor: pointer;
+  border-radius: 5px 5px;
+  transition: left 0.4s ease;
+}
+.burger span {
+  color: white;
+  font-size: 28px;
+  line-height: 40px;
+}
+.burger.click {
+  left: 205px;
+  top: 10px;
+}
+.burger.click span::before {
+  content: '\f00d';
+}
 
+nav {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
+  background-color: black;
+  color: white;
+  transform: translateX(-250px);
+  top: 0;
+  width: 200px;
+}
+
+nav.show {
+  transform: translateX(0);
+}
+.todo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin-top: 50px;
+}
 header {
-  color: blue;
+  color: white;
 }
 
 button,
@@ -33,16 +79,27 @@ i {
   gap: 10px;
 }
 .project-card > p:hover {
-  background-color: burlywood;
+  border-radius: 5px 5px;
+  color: black;
+  background-color: white;
   cursor: pointer;
 }
-.fas {
-  color: brown;
-}
-.fas:hover {
+
+.fa-minus-circle:hover {
   color: red;
 }
 
 .todo-container > * {
   margin-bottom: 10px;
+}
+
+.todo-item {
+  position: relative;
+  border: 2px solid black;
+  width: 100vw;
+}
+.todo-item i {
+  position: absolute;
+  right: 0;
+  top: 0;
 }

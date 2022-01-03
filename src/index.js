@@ -20,14 +20,14 @@ const currentProjects = [
       {
         title: 'Groceries',
         desc: 'Buy tomato, buy orange, buy milk',
-        duedate: new Date(),
+        duedate: new Date().toISOString().split('T')[0],
         id: 'grocery',
         status: false,
       },
       {
         title: 'Read Books',
         desc: 'Noli Me Tangere + El Filibusterismo',
-        duedate: new Date(),
+        duedate: new Date().toISOString().split('T')[0],
         id: 'library',
         status: false,
       },
@@ -40,7 +40,7 @@ const currentProjects = [
       {
         title: 'Walk Chichi',
         desc: 'Go walk my dog and meet other people',
-        duedate: new Date(),
+        duedate: new Date().toISOString().split('T')[0],
         id: 'walkdog',
         status: false,
       },
@@ -98,10 +98,11 @@ const renderTodos = (currentID) => {
     const status = document.createElement('div');
     const deleteIcon = document.createElement('i');
     item.setAttribute('id', todo.id);
-    name.textContent = `Title: ${todo.title}`;
-    desc.textContent = `Description: ${todo.desc}`;
-    duedate.textContent = `Due: ${todo.duedate}`;
-    status.textContent = `Done?: ${todo.status}`;
+    item.classList.add('todo-item');
+    name.textContent = `${todo.title}`;
+    desc.textContent = `${todo.desc}`;
+    duedate.textContent = `${todo.duedate}`;
+    status.textContent = `${todo.status}`;
     deleteIcon.classList.add('fas', 'fa-minus-circle');
     item.append(name, desc, duedate, status, deleteIcon);
     todoContainer.append(item);
@@ -177,6 +178,11 @@ document.querySelector('.project-container').addEventListener('click', (e) => {
 document.querySelector('.todo-form').addEventListener('submit', addTodo);
 document.querySelector('.todo-container').addEventListener('click', (e) => {
   if (e.target.nodeName === 'I') deleteTodo(e);
+});
+document.querySelector('.burger').addEventListener('click', (e) => {
+  e.preventDefault();
+  document.querySelector('.burger').classList.toggle('click');
+  document.querySelector('nav').classList.toggle('show');
 });
 // ### Initial Render
 renderProjects(currentProjects);
