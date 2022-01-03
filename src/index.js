@@ -21,12 +21,14 @@ const currentProjects = [
         title: 'Groceries',
         desc: 'Buy tomato, buy orange, buy milk',
         duedate: new Date(),
+        id: 'grocery',
         status: false,
       },
       {
         title: 'Read Books',
         desc: 'Noli Me Tangere + El Filibusterismo',
         duedate: new Date(),
+        id: 'library',
         status: false,
       },
     ],
@@ -39,6 +41,7 @@ const currentProjects = [
         title: 'Walk Chichi',
         desc: 'Go walk my dog and meet other people',
         duedate: new Date(),
+        id: 'walkdog',
         status: false,
       },
     ],
@@ -94,6 +97,7 @@ const renderTodos = (currentID) => {
     const duedate = document.createElement('div');
     const status = document.createElement('div');
     const deleteIcon = document.createElement('i');
+    item.setAttribute('id', todo.id);
     name.textContent = `Title: ${todo.title}`;
     desc.textContent = `Description: ${todo.desc}`;
     duedate.textContent = `Due: ${todo.duedate}`;
@@ -138,7 +142,7 @@ const addTodo = (e) => {
   const todoName = document.querySelector('.todo-name-input').value;
   const todoDesc = document.querySelector('.todo-desc-input').value;
   const todoDate = document.querySelector('.todo-duedate-input').value;
-  const newTodo = new Todos(todoName, todoDesc, todoDate);
+  const newTodo = new Todos(todoName, todoDesc, todoDate, uniqid());
   if (todoName === '' || todoDesc === '' || todoDate === '') return;
   currentProjects.map((obj) =>
     obj.id === currentID
@@ -151,6 +155,16 @@ const addTodo = (e) => {
   );
   renderTodos(currentID);
 };
+
+const deleteTodo = (e) => {
+  e.preventDefault();
+  let projIndex = currentProjects.findIndex((proj) => proj.id === currentID);
+  let todoIndex = currentProjects[projIndex].todolist.findIndex(
+    (todo) => todo.id === e.target.parentNode.id
+  );
+  currentProjects[projIndex].todolist.splice(todoIndex, 1);
+  renderTodos(currentID);
+};
 // ### Events
 form.addEventListener('submit', addProject);
 document.querySelector('.project-container').addEventListener('click', (e) => {
@@ -161,7 +175,9 @@ document.querySelector('.project-container').addEventListener('click', (e) => {
   if (e.target.nodeName === 'I') deleteProject(e);
 });
 document.querySelector('.todo-form').addEventListener('submit', addTodo);
-
+document.querySelector('.todo-container').addEventListener('click', (e) => {
+  if (e.target.nodeName === 'I') deleteTodo(e);
+});
 // ### Initial Render
 renderProjects(currentProjects);
 renderTodos(currentID);

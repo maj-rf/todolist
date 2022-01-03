@@ -32,10 +32,11 @@ export class Project {
 }
 
 export class Todos {
-  constructor(title, desc, dueDate) {
+  constructor(title, desc, dueDate, id) {
     this._title = title;
     this._desc = desc;
     this._duedate = dueDate;
+    this._todoID = id;
     this._status = false;
   }
 
@@ -61,6 +62,14 @@ export class Todos {
 
   set duedate(todoDuedate) {
     return (this._duedate = todoDuedate);
+  }
+
+  get id() {
+    return this._todoID;
+  }
+
+  set id(newID) {
+    return (this._todoID = newID);
   }
 
   get status() {
