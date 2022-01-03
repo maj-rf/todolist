@@ -21,6 +21,14 @@ export class Project {
   set id(newID) {
     return (this._id = newID);
   }
+
+  get todolist() {
+    return this._todolist;
+  }
+
+  set todolist(obj) {
+    return (this._todolist = [...obj]);
+  }
 }
 
 export class Todos {
