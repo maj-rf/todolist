@@ -23,6 +23,7 @@ body {
   cursor: pointer;
   border-radius: 5px 5px;
   transition: left 0.4s ease;
+  z-index: 1;
 }
 .burger span {
   color: white;
@@ -47,6 +48,7 @@ nav {
   transform: translateX(-250px);
   top: 0;
   width: 200px;
+  z-index: 1;
 }
 
 nav.show {
@@ -94,6 +96,9 @@ i {
 }
 
 .todo-item {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   position: relative;
   border: 2px solid black;
   width: 100vw;
