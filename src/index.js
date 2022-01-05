@@ -19,12 +19,12 @@ document.getElementsByClassName('todo-duedate-input')[0].valueAsDate =
 // ### Default Projects with respective Todolist
 const currentProjects = [
   {
-    name: 'Default List',
+    name: 'Default Project',
     id: uniqid(),
     todolist: [
       {
-        title: 'Groceries',
-        desc: 'Buy tomato, buy orange, buy milk',
+        title: 'My Todo',
+        desc: 'This is a finished todo noted by the toggle button and strikethrough',
         duedate: new Date().toISOString().split('T')[0],
         id: 'grocery',
         status: true,
@@ -39,7 +39,7 @@ const currentProjects = [
     ],
   },
   {
-    name: 'Another List',
+    name: 'Another Default Project',
     id: uniqid(),
     todolist: [
       {

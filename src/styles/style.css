@@ -5,6 +5,7 @@ body {
   font-family: 'Poppins', sans-serif;
   padding: 0;
   margin: 0;
+  height: 100%;
 }
 
 *,
@@ -42,7 +43,6 @@ body {
 .burger.click span::before {
   content: '\f00d';
 }
-
 nav {
   display: flex;
   flex-direction: column;
@@ -50,14 +50,14 @@ nav {
   position: fixed;
   background-color: black;
   color: white;
-  transform: translateX(-250px);
+  left: -250px;
   top: 0;
   width: 250px;
   z-index: 1;
 }
 
 nav.show {
-  transform: translateX(0);
+  left: 0;
 }
 
 header {
@@ -121,7 +121,7 @@ label {
   flex-wrap: wrap;
   position: relative;
   border: 2px solid black;
-  width: 100vw;
+  width: 90vw;
 }
 .todo-item i {
   position: absolute;
@@ -206,7 +206,22 @@ i {
 /* Global End */
 
 @media only screen and (min-width: 768px) {
-  /* .burger {
+  .burger {
     display: none;
-  } */
+  }
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+  nav {
+    left: 0;
+  }
+  .todo-wrapper {
+    margin-left: 250px;
+  }
+  .todo-item {
+    width: 60vw;
+  }
 }
