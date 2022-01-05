@@ -9,7 +9,7 @@ document
   .setAttribute('min', today); //set min date to current date.
 
 document.getElementsByClassName('todo-duedate-input')[0].valueAsDate =
-  new Date(); // set dafault date to today.
+  new Date(); // set default date to today.
 
 // ### Default Projects with respective Todolist
 const currentProjects = [
@@ -61,7 +61,7 @@ const clearChildElements = (element) => {
 const renderProjects = (projects) => {
   const projectsEl = document.querySelector('.project-container');
   clearChildElements(projectsEl);
-  //console.log(projects);
+  console.log(projects);
   projects.forEach((project) => {
     const projCard = document.createElement('div');
     const pEl = document.createElement('p');
