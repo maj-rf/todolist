@@ -3,6 +3,11 @@ import uniqid from 'uniqid';
 import './styles/style.css';
 
 const form = document.querySelector('.project-form');
+const projContainer = document.querySelector('.project-container');
+const todoForm = document.querySelector('.todo-form');
+const todoContainer = document.querySelector('.todo-container');
+const burgerEl = document.querySelector('.burger');
+const navEl = document.querySelector('nav');
 let today = new Date().toISOString().split('T')[0];
 document
   .getElementsByClassName('todo-duedate-input')[0]
@@ -22,7 +27,7 @@ const currentProjects = [
         desc: 'Buy tomato, buy orange, buy milk',
         duedate: new Date().toISOString().split('T')[0],
         id: 'grocery',
-        status: false,
+        status: true,
       },
       {
         title: 'Read Books',
@@ -95,16 +100,23 @@ const renderTodos = (currentID) => {
     const name = document.createElement('div');
     const desc = document.createElement('div');
     const duedate = document.createElement('div');
-    const status = document.createElement('div');
+    const statusCont = document.createElement('label');
+    const statusInput = document.createElement('input');
+    const statusSpan = document.createElement('span');
     const deleteIcon = document.createElement('i');
+    statusCont.classList.add('switch');
+    statusInput.setAttribute('type', 'checkbox');
+    statusSpan.classList.add('slider', 'round');
     item.setAttribute('id', todo.id);
     item.classList.add('todo-item');
-    name.textContent = `${todo.title}`;
-    desc.textContent = `${todo.desc}`;
-    duedate.textContent = `${todo.duedate}`;
-    status.textContent = `${todo.status}`;
+    name.textContent = todo.title;
+    desc.textContent = todo.desc;
+    duedate.textContent = todo.duedate;
+    if (todo.status) item.classList.add('finish');
+    statusInput.checked = todo.status;
     deleteIcon.classList.add('fas', 'fa-trash-alt');
-    item.append(name, desc, duedate, status, deleteIcon);
+    statusCont.append(statusInput, statusSpan);
+    item.append(name, desc, duedate, statusCont, deleteIcon);
     todoContainer.append(item);
   });
 };
@@ -166,24 +178,28 @@ const deleteTodo = (e) => {
   currentProjects[projIndex].todolist.splice(todoIndex, 1);
   renderTodos(currentID);
 };
+
 // ### Events
 form.addEventListener('submit', addProject);
-document.querySelector('.project-container').addEventListener('click', (e) => {
+projContainer.addEventListener('click', (e) => {
   if (e.target.nodeName === 'P') {
     renderTodos(e.target.id);
     currentID = e.target.id;
   }
   if (e.target.nodeName === 'I') deleteProject(e);
 });
-document.querySelector('.todo-form').addEventListener('submit', addTodo);
-document.querySelector('.todo-container').addEventListener('click', (e) => {
+todoForm.addEventListener('submit', addTodo);
+todoContainer.addEventListener('click', (e) => {
   if (e.target.nodeName === 'I') deleteTodo(e);
+  if (e.target.nodeName === 'INPUT')
+    e.target.parentNode.parentNode.classList.toggle('finish');
 });
-document.querySelector('.burger').addEventListener('click', (e) => {
+burgerEl.addEventListener('click', (e) => {
   e.preventDefault();
-  document.querySelector('.burger').classList.toggle('click');
-  document.querySelector('nav').classList.toggle('show');
+  burgerEl.classList.toggle('click');
+  navEl.classList.toggle('show');
 });
+document.querySelector;
 // ### Initial Render
 renderProjects(currentProjects);
 renderTodos(currentID);
