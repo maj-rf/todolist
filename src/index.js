@@ -69,7 +69,7 @@ const renderProjects = (projects) => {
     projCard.classList.add('project-card');
     pEl.setAttribute('id', project.id);
     pEl.textContent = `${project.name}`;
-    deleteIcon.classList.add('fas', 'fa-minus-circle');
+    deleteIcon.classList.add('fas', 'fa-trash-alt');
     projCard.append(pEl, deleteIcon);
     projectsEl.append(projCard);
   });
@@ -103,7 +103,7 @@ const renderTodos = (currentID) => {
     desc.textContent = `${todo.desc}`;
     duedate.textContent = `${todo.duedate}`;
     status.textContent = `${todo.status}`;
-    deleteIcon.classList.add('fas', 'fa-minus-circle');
+    deleteIcon.classList.add('fas', 'fa-trash-alt');
     item.append(name, desc, duedate, status, deleteIcon);
     todoContainer.append(item);
   });

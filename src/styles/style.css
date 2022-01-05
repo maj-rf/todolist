@@ -12,6 +12,8 @@ body {
 *::after {
   box-sizing: inherit;
 }
+
+/* Nav */
 .burger {
   position: absolute;
   top: 10px;
@@ -25,15 +27,18 @@ body {
   transition: left 0.4s ease;
   z-index: 1;
 }
+
 .burger span {
   color: white;
   font-size: 28px;
   line-height: 40px;
 }
+
 .burger.click {
-  left: 205px;
+  left: 255px;
   top: 10px;
 }
+
 .burger.click span::before {
   content: '\f00d';
 }
@@ -47,13 +52,53 @@ nav {
   color: white;
   transform: translateX(-250px);
   top: 0;
-  width: 200px;
+  width: 250px;
   z-index: 1;
 }
 
 nav.show {
   transform: translateX(0);
 }
+
+header {
+  text-align: center;
+  color: white;
+}
+/* Nav End */
+
+/* Projects */
+.project-form {
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  text-align: center;
+  margin: 20px;
+}
+
+.project-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-card > p:hover {
+  border-radius: 5px 5px;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+/* Projects End */
+
+/* Todo */
 .todo-wrapper {
   display: flex;
   flex-direction: column;
@@ -61,34 +106,9 @@ nav.show {
   height: 100vh;
   margin-top: 50px;
 }
-header {
-  color: white;
-}
 
-button,
-input[type='submit'],
-i {
-  cursor: pointer;
-}
-
-.project-form {
-  display: flex;
-}
-
-.project-card {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.project-card > p:hover {
-  border-radius: 5px 5px;
-  color: black;
-  background-color: white;
-  cursor: pointer;
-}
-
-.fa-minus-circle:hover {
-  color: red;
+.todo-container h3:first-child {
+  text-align: center;
 }
 
 .todo-container > * {
@@ -108,3 +128,16 @@ i {
   right: 0;
   top: 0;
 }
+/* Todo End */
+
+/* Global */
+button,
+input[type='submit'],
+i {
+  cursor: pointer;
+}
+
+.fa-trash-alt:hover {
+  color: #c41e3a;
+}
+/* Global End */
