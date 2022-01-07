@@ -23,15 +23,15 @@ const currentProjects = [
     id: uniqid(),
     todolist: [
       {
-        title: 'My Todo',
-        desc: 'This is a finished todo noted by the toggle button and strikethrough',
+        title: 'Default Todo',
+        desc: 'This is a finished todo. You can toggle the status of this by clicking the toggle switch. Doing so will show the deadline and remove the strikethrough. Click the trash icon to delete this todo.',
         duedate: new Date().toISOString().split('T')[0],
         id: 'grocery',
         status: true,
       },
       {
         title: 'Read Books',
-        desc: 'Noli Me Tangere + El Filibusterismo',
+        desc: 'Percy Jackson: Lightning Thief',
         duedate: new Date().toISOString().split('T')[0],
         id: 'library',
         status: false,
@@ -104,6 +104,7 @@ const renderTodos = (currentID) => {
     const statusInput = document.createElement('input');
     const statusSpan = document.createElement('span');
     const deleteIcon = document.createElement('i');
+    duedate.classList.add('deadline');
     statusCont.classList.add('switch');
     statusInput.setAttribute('type', 'checkbox');
     statusSpan.classList.add('slider', 'round');
@@ -112,7 +113,10 @@ const renderTodos = (currentID) => {
     name.textContent = todo.title;
     desc.textContent = todo.desc;
     duedate.textContent = todo.duedate;
-    if (todo.status) item.classList.add('finish');
+    if (todo.status) {
+      item.classList.add('finish');
+      duedate.classList.add('hide');
+    }
     statusInput.checked = todo.status;
     deleteIcon.classList.add('fas', 'fa-trash-alt');
     statusCont.append(statusInput, statusSpan);
@@ -193,7 +197,6 @@ todoContainer.addEventListener('click', (e) => {
   if (e.target.nodeName === 'I') deleteTodo(e);
   if (e.target.nodeName === 'INPUT') {
     e.target.parentNode.parentNode.classList.toggle('finish');
-    console.log(e.target.parentNode.parentNode.id);
     let projIndex = currentProjects.findIndex((proj) => proj.id === currentID);
     let todoIndex = currentProjects[projIndex].todolist.findIndex(
       (todo) => todo.id === e.target.parentNode.parentNode.id
@@ -201,6 +204,9 @@ todoContainer.addEventListener('click', (e) => {
     console.log(currentProjects);
     currentProjects[projIndex].todolist[todoIndex].status =
       !currentProjects[projIndex].todolist[todoIndex].status;
+    if (currentProjects[projIndex].todolist[todoIndex].status === true) {
+      e.target.parentNode.previousElementSibling.classList.add('hide');
+    } else e.target.parentNode.previousElementSibling.classList.remove('hide');
   }
 });
 burgerEl.addEventListener('click', (e) => {
@@ -208,7 +214,6 @@ burgerEl.addEventListener('click', (e) => {
   burgerEl.classList.toggle('click');
   navEl.classList.toggle('show');
 });
-document.querySelector;
 // ### Initial Render
 renderProjects(currentProjects);
 renderTodos(currentID);

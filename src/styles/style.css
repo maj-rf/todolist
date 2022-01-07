@@ -120,13 +120,22 @@ label {
   flex-direction: column;
   flex-wrap: wrap;
   position: relative;
-  border: 2px solid black;
+  border-top: thin solid black;
+  border-bottom: thin solid black;
   width: 90vw;
 }
 .todo-item i {
   position: absolute;
   right: 0;
   top: 0;
+}
+.deadline {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.hide {
+  display: none;
 }
 .finish {
   background-color: rgba(128, 128, 128, 0.301);
