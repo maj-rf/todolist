@@ -66,7 +66,6 @@ const clearChildElements = (element) => {
 const renderProjects = (projects) => {
   const projectsEl = document.querySelector('.project-container');
   clearChildElements(projectsEl);
-  console.log(projects);
   projects.forEach((project) => {
     const projCard = document.createElement('div');
     const pEl = document.createElement('p');
@@ -201,7 +200,6 @@ todoContainer.addEventListener('click', (e) => {
     let todoIndex = currentProjects[projIndex].todolist.findIndex(
       (todo) => todo.id === e.target.parentNode.parentNode.id
     );
-    console.log(currentProjects);
     currentProjects[projIndex].todolist[todoIndex].status =
       !currentProjects[projIndex].todolist[todoIndex].status;
     if (currentProjects[projIndex].todolist[todoIndex].status === true) {
