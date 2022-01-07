@@ -77,6 +77,6 @@ export class Todos {
   }
 
   set status(stat) {
-    return (this._status = !stat);
+    return (this._status = stat);
   }
 }

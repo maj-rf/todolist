@@ -191,8 +191,17 @@ projContainer.addEventListener('click', (e) => {
 todoForm.addEventListener('submit', addTodo);
 todoContainer.addEventListener('click', (e) => {
   if (e.target.nodeName === 'I') deleteTodo(e);
-  if (e.target.nodeName === 'INPUT')
+  if (e.target.nodeName === 'INPUT') {
     e.target.parentNode.parentNode.classList.toggle('finish');
+    console.log(e.target.parentNode.parentNode.id);
+    let projIndex = currentProjects.findIndex((proj) => proj.id === currentID);
+    let todoIndex = currentProjects[projIndex].todolist.findIndex(
+      (todo) => todo.id === e.target.parentNode.parentNode.id
+    );
+    console.log(currentProjects);
+    currentProjects[projIndex].todolist[todoIndex].status =
+      !currentProjects[projIndex].todolist[todoIndex].status;
+  }
 });
 burgerEl.addEventListener('click', (e) => {
   e.preventDefault();
