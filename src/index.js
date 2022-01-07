@@ -8,6 +8,9 @@ const todoForm = document.querySelector('.todo-form');
 const todoContainer = document.querySelector('.todo-container');
 const burgerEl = document.querySelector('.burger');
 const navEl = document.querySelector('nav');
+const modalBtn = document.querySelector('.modal-btn');
+const closeBtn = document.querySelector('.modal-close');
+const modal = document.querySelector('.modal');
 let today = new Date().toISOString().split('T')[0];
 document
   .getElementsByClassName('todo-duedate-input')[0]
@@ -103,15 +106,16 @@ const renderTodos = (currentID) => {
     const statusInput = document.createElement('input');
     const statusSpan = document.createElement('span');
     const deleteIcon = document.createElement('i');
-    duedate.classList.add('deadline');
     statusCont.classList.add('switch');
     statusInput.setAttribute('type', 'checkbox');
-    statusSpan.classList.add('slider', 'round');
+    statusSpan.classList.add('slider');
     item.setAttribute('id', todo.id);
     item.classList.add('todo-item');
+    name.classList.add('todo-name');
+    duedate.classList.add('deadline');
     name.textContent = todo.title;
     desc.textContent = todo.desc;
-    duedate.textContent = todo.duedate;
+    duedate.textContent = `Deadline: ${todo.duedate}`;
     if (todo.status) {
       item.classList.add('finish');
       duedate.classList.add('hide');
@@ -212,6 +216,16 @@ burgerEl.addEventListener('click', (e) => {
   burgerEl.classList.toggle('click');
   navEl.classList.toggle('show');
 });
+
+modalBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  modal.style.display = 'block';
+});
+closeBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  modal.style.display = 'none';
+});
+
 // ### Initial Render
 renderProjects(currentProjects);
 renderTodos(currentID);
