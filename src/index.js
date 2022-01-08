@@ -11,6 +11,7 @@ const navEl = document.querySelector('nav');
 const modalBtn = document.querySelector('.modal-btn');
 const closeBtn = document.querySelector('.modal-close');
 const modal = document.querySelector('.modal');
+const validation = document.querySelector('.validation');
 let today = new Date().toISOString().split('T')[0];
 document
   .getElementsByClassName('todo-duedate-input')[0]
@@ -174,6 +175,7 @@ const addTodo = (e) => {
       : obj
   );
   renderTodos(currentID);
+  todoForm.reset();
 };
 
 const deleteTodo = (e) => {
