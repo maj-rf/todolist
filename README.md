@@ -4,7 +4,7 @@ A To-do List App for TOP's Javascript Path.
 
 ## Overview
 
-![Todolist Image](https://photos.app.goo.gl/RBfUqhDzKrucP6Wf7)
+![Imgur](https://i.imgur.com/m7UqYCv.png)
 
 A To-do List Web App made with VanillaJS and initially apply what I learned with Webpack and OOP for JS.
 
