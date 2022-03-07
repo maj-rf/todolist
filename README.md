@@ -4,6 +4,8 @@ A To-do List App for TOP's Javascript Path.
 
 ## Overview
 
+![Todolist Image](https://photos.app.goo.gl/RBfUqhDzKrucP6Wf7)
+
 A To-do List Web App made with VanillaJS and initially apply what I learned with Webpack and OOP for JS.
 
 [Live Preview here!](https://bananabread08.github.io/todolist/)
