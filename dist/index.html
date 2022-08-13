@@ -4,9 +4,59 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
+    <header>
+      <h1>Todon't</h1>
+    </header>
+    <main>
+      <section>
+        <form action="" id="project-form">
+          <input type="text" placeholder="Add a Project.." />
+          <button type="submit">Add</button>
+        </form>
+      </section>
+    </main>
+    <div class="float"><button class="open-btn">+</button></div>
+    <dialog id="todo-modal">
+      <h2>Create Todo</h2>
+      <form method="dialog" id="todo-form">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" id="title" required />
+        </div>
+        <div class="form-group">
+          <label for="details">Details:</label>
+          <textarea
+            name="details"
+            id="details"
+            cols="30"
+            rows="6"
+            required="true"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="due">Due:</label>
+          <input type="date" id="due" />
+        </div>
+        <div class="form-group">
+          <label for="priority">Priority:</label>
+          <select name="priorities" id="priority-select">
+            <option value="critical">Critical</option>
+            <option value="important">Important</option>
+            <option value="normal" default>Normal</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+        <button type="button" value="cancel" class="cancel">Cancel</button>
+        <button type="submit" class="submit">Submit</button>
+      </form>
+    </dialog>
     <script src="main.js"></script>
   </body>
 </html>
