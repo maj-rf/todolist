@@ -1,4 +1,4 @@
-export class Project {
+class Project {
   constructor(name, id) {
     this._name = name;
     this._id = id;
@@ -7,6 +7,10 @@ export class Project {
 
   addTodo(todo) {
     this._todolist.push(todo);
+  }
+
+  deleteTodo(todo) {
+    this._todolist.filter((x) => todo.id !== x.id);
   }
 
   get name() {
@@ -33,3 +37,5 @@ export class Project {
     return (this._todolist = [...obj]);
   }
 }
+
+export default Project;
