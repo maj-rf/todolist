@@ -89,3 +89,8 @@ h2 {
   border: 1px solid black;
   border-left: 5px solid crimson;
 }
+
+.deleteBtn {
+  margin-left: 2rem;
+  cursor: pointer;
+}
