@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+:root {
+  --gray: rgb(188, 187, 187);
+  --gray-100: #999;
+  --white: #fff;
+  --green: #0c9;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -22,11 +29,11 @@ h2 {
   height: 60px;
   bottom: 40px;
   right: 40px;
-  background-color: #0c9;
-  color: #fff;
+  background-color: var(--green);
+  color: var(--white);
   border-radius: 50px;
   text-align: center;
-  box-shadow: 2px 2px 3px #999;
+  box-shadow: 2px 2px 3px var(--gray-100);
 }
 .open-btn {
   width: 100%;
@@ -50,20 +57,35 @@ h2 {
   max-width: 600px;
   border-radius: 1rem 1rem 0 0;
   border-top: none;
-  box-shadow: 4px 4px 5px #999;
+  box-shadow: 4px 4px 5px var(--gray-100);
 }
 
 #todo-modal h2 {
   text-align: center;
-  background-color: gray;
-  padding: 0.5rem;
-  margin: -1rem -2rem 0 -2rem;
-  color: #fff;
+  background-color: var(--gray);
+  padding: 0.5rem 0;
+  margin: -1rem -1rem 0 -1rem;
+  color: var(--white);
+}
+
+#todo-form .form-group:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+#todo-form .form-group {
+  margin-top: 0.5rem;
 }
 
 #todo-form input,
-#todo-form textarea {
+#todo-form textarea,
+#todo-form select {
   width: 100%;
   padding: 0.5rem;
   font-size: 1.1rem;
+}
+
+#todo-form input:required,
+#todo-form textarea:required {
+  border: 1px solid black;
+  border-left: 5px solid crimson;
 }
