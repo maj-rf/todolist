@@ -8,6 +8,9 @@ const todoForm = document.getElementById('todo-form');
 const cancelBtn = document.querySelector('.cancel');
 const projectForm = document.getElementById('project-form');
 const projectsUL = document.querySelector('.projects');
+const navToggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('nav');
+
 let projects = [
   {
     name: 'Test Project',
@@ -26,12 +29,19 @@ cancelBtn.addEventListener('click', () => todoModal.close());
 todoForm.addEventListener('submit', () => alert('submitted'));
 projectForm.addEventListener('submit', addProject);
 projectsUL.addEventListener('click', (e) => {
-  if (e.target.nodeName === 'LI')
-    display.renderTodos(
-      projects[projects.findIndex((x) => x.id === e.target.id)]
+  if (e.target.nodeName === 'SPAN') {
+    projectsUL.childNodes.forEach((li) => {
+      li.classList.remove('active-project');
+    });
+    e.target.parentNode.classList.add('active-project');
+    return display.renderTodos(
+      projects[projects.findIndex((x) => x.id === e.target.parentNode.id)]
     );
-  if (e.target.nodeName === 'BUTTON') deleteProject(e);
+  } else if (e.target.nodeName === 'BUTTON') deleteProject(e);
   return;
+});
+navToggle.addEventListener('click', (e) => {
+  nav.classList.toggle('nav--visible');
 });
 
 function addProject(e) {
@@ -52,7 +62,6 @@ function addProject(e) {
 }
 
 function deleteProject(e) {
-  console.log(e.target.parentNode.id);
   display.clearElements(projectsUL);
   projects = [...projects].filter((proj) => proj.id !== e.target.parentNode.id);
   display.render(projects);

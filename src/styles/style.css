@@ -23,6 +23,80 @@ h2 {
   margin: 0;
 }
 
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  background-color: var(--green);
+  position: sticky;
+  top: 0;
+}
+
+.nav-toggle {
+  cursor: pointer;
+  border: 0;
+  width: 3em;
+  height: 3em;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--gray);
+  transition: opacity 250ms ease;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.nav-toggle:focus,
+.nav-toggle:hover {
+  opacity: 0.75;
+}
+
+.hamburger {
+  width: 50%;
+  position: relative;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  display: block;
+  margin: 0 auto;
+  height: 3px;
+  background: var(--white);
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  width: 100%;
+}
+
+.hamburger::before {
+  transform: translateY(-6px);
+}
+
+.hamburger::after {
+  transform: translateY(3px);
+}
+
+nav {
+  visibility: hidden;
+  height: 0;
+  text-align: center;
+  position: relative;
+}
+
+.nav--visible {
+  visibility: visible;
+  height: auto;
+  position: relative;
+}
+
 .float {
   position: fixed;
   width: 60px;
@@ -91,6 +165,47 @@ h2 {
 }
 
 .deleteBtn {
-  margin-left: 2rem;
   cursor: pointer;
+}
+.project-li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin-inline: auto;
+}
+.project-span {
+  cursor: pointer;
+}
+.active-project {
+  color: var(--white);
+}
+
+@media (min-width: 800px) {
+  body {
+    display: flex;
+    flex-direction: row;
+  }
+  header {
+    min-width: 300px;
+  }
+  .nav-toggle {
+    display: none;
+  }
+
+  .project-li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    margin-inline: auto;
+  }
+
+  nav {
+    visibility: visible;
+    height: auto;
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+  }
 }
