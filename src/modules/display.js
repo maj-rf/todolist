@@ -7,16 +7,22 @@ const display = (() => {
     }
   }
 
+  function createMsgElement(type) {
+    const p = document.createElement('p');
+    p.textContent = `There are no ${type === 'todos' ? 'tasks.' : 'projects.'}`;
+    return projectsUL.appendChild(p);
+  }
+
   function createProjectElement(project) {
     const projectLI = document.createElement('li');
     const span = document.createElement('span');
     const btn = document.createElement('button');
     projectLI.classList.add('project-li');
     span.classList.add('project-span');
-    projectLI.setAttribute('id', project.id);
+    projectLI.setAttribute('id', project._id);
     btn.textContent = 'X';
     btn.classList.add('deleteBtn');
-    span.textContent = project.name;
+    span.textContent = project._name;
     projectLI.append(span, btn);
     projectsUL.appendChild(projectLI);
     return;
@@ -31,7 +37,7 @@ const display = (() => {
 
   function createTodoHeading(project) {
     const h2 = document.createElement('h2');
-    h2.textContent = project.name;
+    h2.textContent = project._name;
     todosUL.appendChild(h2);
     return;
   }
@@ -41,12 +47,13 @@ const display = (() => {
     projectsUL.childNodes.forEach((li) => {
       li.classList.remove('active-project');
     });
-    const activeProject = document.querySelector(`#${currentProject.id}`);
+    const activeProject = document.querySelector(`#${currentProject._id}`);
     activeProject?.classList.add('active-project');
   }
 
   function renderProjects(projects, currentProject) {
     clearElements(projectsUL);
+    if (projects.length <= 0) return createMsgElement('projects');
     for (const project of projects) {
       createProjectElement(project);
     }
@@ -58,18 +65,20 @@ const display = (() => {
     if (!project) return clearElements(todosUL);
     clearElements(todosUL);
     createTodoHeading(project);
-    for (const todo of project.todolist) {
+    for (const todo of project._todolist) {
       createTodoElement(todo);
     }
     return;
   }
 
-  function render(project, currentProject) {
-    renderProjects(project, currentProject);
+  function renderAndSave(projects, currentProject) {
+    localStorage.setItem('projects', JSON.stringify(projects));
+    //localStorage.setItem('currentProject', JSON.stringify(currentProject));
+    renderProjects(projects, currentProject);
     renderTodos(currentProject);
     return;
   }
-  return { renderProjects, clearElements, renderTodos, render };
+  return { renderProjects, clearElements, renderTodos, renderAndSave };
 })();
 
 export default display;

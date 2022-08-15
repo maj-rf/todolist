@@ -11,19 +11,21 @@ const projectsUL = document.querySelector('.projects');
 const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('nav');
 
-let projects = [
+let projects = JSON.parse(localStorage.getItem('projects')) || [
   {
-    name: 'Test Project',
-    id: 'testid',
-    todolist: [{ title: 'test todo' }, { title: 'another todo' }],
+    _name: 'Test Project',
+    _id: 'testid',
+    _todolist: [{ title: 'test todo' }, { title: 'another todo' }],
   },
   {
-    name: 'AnotherProject',
-    id: 'testid2',
-    todolist: [{ title: 'asdasdsa' }, { title: 'another' }],
+    _name: 'AnotherProject',
+    _id: 'testid2',
+    _todolist: [{ title: 'asdasdsa' }, { title: 'another' }],
   },
 ];
 
+// let currentProject =
+//   JSON.parse(localStorage.getItem('currentProject')) || projects[0];
 let currentProject = projects[0];
 
 openBtn.addEventListener('click', () => todoModal.showModal());
@@ -31,16 +33,16 @@ cancelBtn.addEventListener('click', () => todoModal.close());
 todoForm.addEventListener('submit', () => alert('submitted'));
 projectForm.addEventListener('submit', (e) => {
   currentProject = addProject(e);
-  display.render(projects, currentProject);
+  display.renderAndSave(projects, currentProject);
 });
 projectsUL.addEventListener('click', (e) => {
   if (e.target.nodeName === 'SPAN') {
     currentProject =
-      projects[projects.findIndex((x) => x.id === e.target.parentNode.id)];
-    return display.render(projects, currentProject);
+      projects[projects.findIndex((x) => x._id === e.target.parentNode.id)];
+    return display.renderAndSave(projects, currentProject);
   } else if (e.target.nodeName === 'BUTTON') {
     projects = deleteProject(e);
-    display.render(projects, projects[0]);
+    display.renderAndSave(projects, projects[0]);
   }
   return;
 });
@@ -58,14 +60,17 @@ function addProject(e) {
   );
   project.addTodo({ title: 'Example Todo' });
   projects.push(project);
+  //localStorage.setItem('projects', JSON.stringify(projects));
   projectForm.reset();
   return project;
 }
 
 function deleteProject(e) {
-  return (projects = [...projects].filter(
-    (proj) => proj.id !== e.target.parentNode.id
-  ));
+  projects = [...projects].filter(
+    (proj) => proj._id !== e.target.parentNode.id
+  );
+  //localStorage.setItem('projects', JSON.stringify(projects));
+  return projects;
 }
 // init()
-display.render(projects, currentProject);
+display.renderAndSave(projects, currentProject);
