@@ -13,25 +13,26 @@
   <body>
     <header>
       <h1>Todon't</h1>
-    </header>
-    <main>
-      <section>
+      <button class="nav-toggle" aria-label="open navigation">
+        <span class="hamburger"></span>
+      </button>
+      <nav>
         <form action="" id="project-form">
           <input
             type="text"
             placeholder="Add a Project.."
             class="project-name"
+            maxlength="20"
+            required
           />
           <button type="submit">Add</button>
         </form>
-      </section>
-      <section>
         <ul class="projects"></ul>
-      </section>
+      </nav>
+    </header>
+    <main>
       <section>
-        <ul class="todos">
-          <h2 class="todo-title"></h2>
-        </ul>
+        <ul class="todos"></ul>
       </section>
     </main>
     <div class="float"><button class="open-btn">+</button></div>
