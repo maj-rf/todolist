@@ -1,6 +1,11 @@
 import './styles/style.css';
 import Project from './modules/Projects';
 import display from './modules/display';
+import {
+  addProject,
+  deleteProject,
+  createTodo,
+} from './modules/projectFunctions';
 
 const openBtn = document.querySelector('.open-btn');
 const todoModal = document.getElementById('todo-modal');
@@ -11,29 +16,28 @@ const projectsUL = document.querySelector('.projects');
 const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('nav');
 
-let projects = JSON.parse(localStorage.getItem('projects')) || [
-  {
-    _name: 'Test Project',
-    _id: 'testid',
-    _todolist: [{ title: 'test todo' }, { title: 'another todo' }],
-  },
-  {
-    _name: 'AnotherProject',
-    _id: 'testid2',
-    _todolist: [{ title: 'asdasdsa' }, { title: 'another' }],
-  },
-];
+const storage = JSON.parse(localStorage.getItem('projects')) || [];
+let projects = storage.map(
+  (proj) => new Project(proj._name, proj._id, proj._todolist)
+);
 
-// let currentProject =
-//   JSON.parse(localStorage.getItem('currentProject')) || projects[0];
 let currentProject = projects[0];
 
 openBtn.addEventListener('click', () => todoModal.showModal());
 cancelBtn.addEventListener('click', () => todoModal.close());
-todoForm.addEventListener('submit', () => alert('submitted'));
-projectForm.addEventListener('submit', (e) => {
-  currentProject = addProject(e);
+todoForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  createTodo(currentProject);
   display.renderAndSave(projects, currentProject);
+  todoModal.close();
+  todoForm.reset();
+  return;
+});
+projectForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  currentProject = addProject(projects);
+  display.renderAndSave(projects, currentProject);
+  return;
 });
 projectsUL.addEventListener('click', (e) => {
   if (e.target.nodeName === 'SPAN') {
@@ -41,7 +45,7 @@ projectsUL.addEventListener('click', (e) => {
       projects[projects.findIndex((x) => x._id === e.target.parentNode.id)];
     return display.renderAndSave(projects, currentProject);
   } else if (e.target.nodeName === 'BUTTON') {
-    projects = deleteProject(e);
+    projects = deleteProject(e, projects);
     display.renderAndSave(projects, projects[0]);
   }
   return;
@@ -50,27 +54,5 @@ navToggle.addEventListener('click', () => {
   nav.classList.toggle('nav--visible');
 });
 
-function addProject(e) {
-  e.preventDefault();
-  const projectForm = document.getElementById('project-form');
-  const projectInput = document.querySelector('.project-name');
-  let project = new Project(
-    projectInput.value,
-    projectInput.value + Date.now()
-  );
-  project.addTodo({ title: 'Example Todo' });
-  projects.push(project);
-  //localStorage.setItem('projects', JSON.stringify(projects));
-  projectForm.reset();
-  return project;
-}
-
-function deleteProject(e) {
-  projects = [...projects].filter(
-    (proj) => proj._id !== e.target.parentNode.id
-  );
-  //localStorage.setItem('projects', JSON.stringify(projects));
-  return projects;
-}
 // init()
 display.renderAndSave(projects, currentProject);

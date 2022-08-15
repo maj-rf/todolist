@@ -1,16 +1,16 @@
 class Project {
-  constructor(name) {
+  constructor(name, id, todolist = []) {
     this._name = name;
-    this._id = this.name + Date.now();
-    this._todolist = []; //JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODOLIST_KEY)) || []; //array of todos
+    this._id = id;
+    this._todolist = todolist; //JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODOLIST_KEY)) || []; //array of todos
   }
 
   addTodo(todo) {
-    this._todolist.push(todo);
+    return this._todolist.push(todo);
   }
 
   deleteTodo(todo) {
-    this._todolist.filter((x) => todo.id !== x.id);
+    return this._todolist.filter((x) => todo.id !== x.id);
   }
 
   get name() {

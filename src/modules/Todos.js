@@ -1,9 +1,9 @@
-export class Todos {
-  constructor(title, desc, dueDate, id) {
+export default class Todos {
+  constructor(title, details, due) {
     this._title = title;
-    this._desc = desc;
-    this._duedate = dueDate;
-    this._todoID = id;
+    this._details = details;
+    this._due = due;
+    this._id = title + Date.now();
     this._status = false;
   }
 
@@ -15,28 +15,24 @@ export class Todos {
     return (this._title = todoName);
   }
 
-  get desc() {
-    return this._desc;
+  get details() {
+    return this._details;
   }
 
-  set desc(todoDesc) {
-    return (this._desc = todoDesc);
+  set details(todoDesc) {
+    return (this._details = todoDesc);
   }
 
-  get duedate() {
-    return this._duedate;
+  get due() {
+    return this._due;
   }
 
-  set duedate(todoDuedate) {
-    return (this._duedate = todoDuedate);
+  set due(todoDuedate) {
+    return (this._due = todoDuedate);
   }
 
   get id() {
-    return this._todoID;
-  }
-
-  set id(newID) {
-    return (this._todoID = newID);
+    return this._id;
   }
 
   get status() {

@@ -30,7 +30,7 @@ const display = (() => {
 
   function createTodoElement(todo) {
     const todoLI = document.createElement('li');
-    todoLI.textContent = todo.title;
+    todoLI.textContent = todo._title;
     todosUL.appendChild(todoLI);
     return;
   }
@@ -72,6 +72,7 @@ const display = (() => {
   }
 
   function renderAndSave(projects, currentProject) {
+    console.log(projects);
     localStorage.setItem('projects', JSON.stringify(projects));
     //localStorage.setItem('currentProject', JSON.stringify(currentProject));
     renderProjects(projects, currentProject);
