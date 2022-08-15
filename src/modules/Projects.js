@@ -1,7 +1,7 @@
 class Project {
-  constructor(name, id) {
+  constructor(name) {
     this._name = name;
-    this._id = id;
+    this._id = this.name + Date.now();
     this._todolist = []; //JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODOLIST_KEY)) || []; //array of todos
   }
 

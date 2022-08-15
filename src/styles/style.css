@@ -30,6 +30,7 @@ li {
   margin: 0;
 }
 
+/* NAV & HEADER*/
 header {
   background-color: var(--green);
   position: sticky;
@@ -95,6 +96,30 @@ nav {
   visibility: visible;
   height: auto;
   position: relative;
+}
+
+/* PROJECTS */
+.project-li {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin-inline: auto;
+  border-bottom: 1px solid white;
+}
+
+.project-li span {
+  width: 100%;
+}
+
+.project-li:hover {
+  background-color: var(--white);
+}
+.project-span {
+  cursor: pointer;
+}
+.active-project {
+  background-color: var(--white);
 }
 
 .float {
@@ -166,19 +191,6 @@ nav {
 
 .deleteBtn {
   cursor: pointer;
-}
-.project-li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  margin-inline: auto;
-}
-.project-span {
-  cursor: pointer;
-}
-.active-project {
-  color: var(--white);
 }
 
 @media (min-width: 800px) {

@@ -24,23 +24,27 @@ let projects = [
   },
 ];
 
+let currentProject = projects[0];
+
 openBtn.addEventListener('click', () => todoModal.showModal());
 cancelBtn.addEventListener('click', () => todoModal.close());
 todoForm.addEventListener('submit', () => alert('submitted'));
-projectForm.addEventListener('submit', addProject);
+projectForm.addEventListener('submit', (e) => {
+  currentProject = addProject(e);
+  display.render(projects, currentProject);
+});
 projectsUL.addEventListener('click', (e) => {
   if (e.target.nodeName === 'SPAN') {
-    projectsUL.childNodes.forEach((li) => {
-      li.classList.remove('active-project');
-    });
-    e.target.parentNode.classList.add('active-project');
-    return display.renderTodos(
-      projects[projects.findIndex((x) => x.id === e.target.parentNode.id)]
-    );
-  } else if (e.target.nodeName === 'BUTTON') deleteProject(e);
+    currentProject =
+      projects[projects.findIndex((x) => x.id === e.target.parentNode.id)];
+    return display.render(projects, currentProject);
+  } else if (e.target.nodeName === 'BUTTON') {
+    projects = deleteProject(e);
+    display.render(projects, projects[0]);
+  }
   return;
 });
-navToggle.addEventListener('click', (e) => {
+navToggle.addEventListener('click', () => {
   nav.classList.toggle('nav--visible');
 });
 
@@ -54,21 +58,14 @@ function addProject(e) {
   );
   project.addTodo({ title: 'Example Todo' });
   projects.push(project);
-  display.clearElements(projectsUL);
-  display.render(projects);
-  display.renderTodos(project);
   projectForm.reset();
-  return;
+  return project;
 }
 
 function deleteProject(e) {
-  display.clearElements(projectsUL);
-  projects = [...projects].filter((proj) => proj.id !== e.target.parentNode.id);
-  display.render(projects);
-  display.renderTodos(projects[0]);
-  return;
+  return (projects = [...projects].filter(
+    (proj) => proj.id !== e.target.parentNode.id
+  ));
 }
-
 // init()
-display.render(projects);
-display.renderTodos(projects[0]);
+display.render(projects, currentProject);
