@@ -1,5 +1,6 @@
 const display = (() => {
   const todosUL = document.querySelector('.todos');
+
   const projectsUL = document.querySelector('.projects');
   function clearElements(element) {
     while (element.firstChild) {
@@ -10,18 +11,25 @@ const display = (() => {
   function createMsgElement(type) {
     const p = document.createElement('p');
     p.textContent = `There are no ${type === 'todos' ? 'tasks.' : 'projects.'}`;
-    return projectsUL.appendChild(p);
+    return type === 'todos'
+      ? todosUL.appendChild(p)
+      : projectsUL.appendChild(p);
+  }
+
+  function createBtn() {
+    const btn = document.createElement('button');
+    btn.textContent = 'X';
+    btn.classList.add('deleteBtn');
+    return btn;
   }
 
   function createProjectElement(project) {
     const projectLI = document.createElement('li');
     const span = document.createElement('span');
-    const btn = document.createElement('button');
+    const btn = createBtn();
     projectLI.classList.add('project-li');
     span.classList.add('project-span');
     projectLI.setAttribute('id', project._id);
-    btn.textContent = 'X';
-    btn.classList.add('deleteBtn');
     span.textContent = project._name;
     projectLI.append(span, btn);
     projectsUL.appendChild(projectLI);
@@ -30,7 +38,11 @@ const display = (() => {
 
   function createTodoElement(todo) {
     const todoLI = document.createElement('li');
+    const btn = createBtn();
+    btn.classList.add('todo-delete');
     todoLI.textContent = todo._title;
+    todoLI.setAttribute('id', todo._id);
+    todoLI.appendChild(btn);
     todosUL.appendChild(todoLI);
     return;
   }
@@ -63,6 +75,11 @@ const display = (() => {
 
   function renderTodos(project) {
     if (!project) return clearElements(todosUL);
+    if (project._todolist.length <= 0) {
+      clearElements(todosUL);
+      createTodoHeading(project);
+      return createMsgElement('todos');
+    }
     clearElements(todosUL);
     createTodoHeading(project);
     for (const todo of project._todolist) {
@@ -72,7 +89,6 @@ const display = (() => {
   }
 
   function renderAndSave(projects, currentProject) {
-    console.log(projects);
     localStorage.setItem('projects', JSON.stringify(projects));
     //localStorage.setItem('currentProject', JSON.stringify(currentProject));
     renderProjects(projects, currentProject);
