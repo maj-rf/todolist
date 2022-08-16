@@ -1,9 +1,10 @@
 export default class Todos {
-  constructor(title, details, due) {
+  constructor(title, details, due, priority, id = title + Date.now()) {
     this._title = title;
     this._details = details;
     this._due = due;
-    this._id = title + Date.now();
+    this._id = id;
+    this._priority = priority;
     this._status = false;
   }
 
@@ -35,11 +36,23 @@ export default class Todos {
     return this._id;
   }
 
+  set id(newID) {
+    return this._id;
+  }
+
   get status() {
     return this._status;
   }
 
   set status(stat) {
     return (this._status = stat);
+  }
+
+  get priority() {
+    return (this._priority = priority);
+  }
+
+  set priority(newPrio) {
+    return (this._priority = newPrio);
   }
 }

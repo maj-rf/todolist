@@ -6,11 +6,13 @@ class Project {
   }
 
   addTodo(todo) {
-    return this._todolist.push(todo);
+    this._todolist.push(todo);
+    return this;
   }
 
-  deleteTodo(todo) {
-    return this._todolist.filter((x) => todo.id !== x.id);
+  deleteTodo(todoID) {
+    this._todolist = this._todolist.filter((x) => todoID !== x._id);
+    return this;
   }
 
   get name() {
