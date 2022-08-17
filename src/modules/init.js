@@ -131,7 +131,7 @@ const init = (projects, currentProject) => {
   const projectsUL = document.querySelector('.projects');
   const navToggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('nav');
-  const todoUL = document.querySelector('.todos');
+  const todoContainer = document.querySelector('.todos');
   openBtn.addEventListener('click', () => todoModal.showModal());
   cancelBtn.addEventListener('click', () => todoModal.close());
 
@@ -166,9 +166,8 @@ const init = (projects, currentProject) => {
     return;
   });
 
-  todoUL.addEventListener('click', (e) => {
+  todoContainer.addEventListener('click', (e) => {
     if (e.target.nodeName === 'BUTTON') {
-      console.log(e.target.parentNode.id);
       currentProject = currentProject.deleteTodo(e.target.parentNode.id);
       display.renderAndSave(projects, currentProject);
     }
