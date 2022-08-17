@@ -1,7 +1,10 @@
+import listIcon from '../assets/list.svg';
+
 const display = (() => {
   const todoContainer = document.querySelector('.todos');
 
   const projectsUL = document.querySelector('.projects');
+
   function clearElements(element) {
     while (element.firstChild) {
       element.removeChild(element.firstChild);
@@ -18,21 +21,21 @@ const display = (() => {
 
   function createBtn() {
     const btn = document.createElement('button');
-    btn.textContent = 'X';
     btn.classList.add('deleteBtn');
-    btn.classList.add('btn');
     return btn;
   }
 
   function createProjectElement(project) {
     const projectLI = document.createElement('li');
     const span = document.createElement('span');
+    const icon = new Image();
+    icon.src = listIcon;
     const btn = createBtn();
     projectLI.classList.add('project-li');
     span.classList.add('project-span');
     projectLI.setAttribute('id', project._id);
     span.textContent = project._name;
-    projectLI.append(span, btn);
+    projectLI.append(icon, span, btn);
     projectsUL.appendChild(projectLI);
     return;
   }
@@ -56,7 +59,7 @@ const display = (() => {
     todoTitle.textContent = todo._title;
     todoDue.textContent = todo._due;
     todoTitle.setAttribute('id', todo._id);
-    todoTitle.append(btn, todoStatus);
+    todoTitle.append(todoStatus, btn);
     todoContent.appendChild(todoDue);
     todoDetails.append(todoTitle, todoContent);
     todoContainer.appendChild(todoDetails);
