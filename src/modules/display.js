@@ -20,6 +20,7 @@ const display = (() => {
     const btn = document.createElement('button');
     btn.textContent = 'X';
     btn.classList.add('deleteBtn');
+    btn.classList.add('btn');
     return btn;
   }
 
@@ -41,14 +42,21 @@ const display = (() => {
     const todoTitle = document.createElement('summary');
     const todoContent = document.createElement('div');
     const todoDue = document.createElement('p');
+    const todoStatus = document.createElement('input');
     const btn = createBtn();
+    todoStatus.type = 'checkbox';
+    todoStatus.name = 'status';
+    todoStatus.checked = todo._status;
+    todoStatus.checked
+      ? todoDetails.classList.add('done')
+      : todoDetails.classList.remove('done');
     btn.classList.add('todo-delete');
     todoDetails.classList.add(todo._priority);
     todoContent.textContent = todo._details;
     todoTitle.textContent = todo._title;
     todoDue.textContent = todo._due;
     todoTitle.setAttribute('id', todo._id);
-    todoTitle.appendChild(btn);
+    todoTitle.append(btn, todoStatus);
     todoContent.appendChild(todoDue);
     todoDetails.append(todoTitle, todoContent);
     todoContainer.appendChild(todoDetails);

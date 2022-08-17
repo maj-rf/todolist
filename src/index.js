@@ -16,7 +16,8 @@ let projects = storage.map(
             todo?._details,
             todo?._due,
             todo?._priority,
-            todo?._id
+            todo?._id,
+            todo?._status
           )
       )
     )
