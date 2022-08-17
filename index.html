@@ -8,25 +8,29 @@
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <title>TO-DON'T</title>
   </head>
   <body>
     <header>
-      <h1>Todon't</h1>
-      <button class="nav-toggle" aria-label="open navigation">
-        <span class="hamburger"></span>
-      </button>
+      <div>
+        <h1>TO-DON'T</h1>
+        <button class="nav-toggle" aria-label="open navigation">
+          <span class="hamburger"></span>
+        </button>
+      </div>
       <nav>
-        <form action="" id="project-form">
-          <input
-            type="text"
-            placeholder="Add a Project.."
-            class="project-name"
-            maxlength="20"
-            required
-          />
-          <button type="submit">Add</button>
-        </form>
+        <div>
+          <form action="" id="project-form">
+            <input
+              type="text"
+              placeholder="Add a Project.."
+              class="project-name"
+              maxlength="20"
+              required
+            />
+            <button class="btn" type="submit">Add</button>
+          </form>
+        </div>
         <ul class="projects"></ul>
       </nav>
     </header>
@@ -66,8 +70,8 @@
             <option value="low">Low</option>
           </select>
         </div>
-        <button type="button" value="cancel" class="cancel">Cancel</button>
-        <button type="submit" class="submit">Submit</button>
+        <button type="button" value="cancel" class="cancel btn">Cancel</button>
+        <button type="submit" class="submit btn">Submit</button>
       </form>
     </dialog>
     <script src="main.js"></script>
