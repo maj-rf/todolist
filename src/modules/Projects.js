@@ -15,6 +15,12 @@ class Project {
     return this;
   }
 
+  changeTodoStatus(todoID) {
+    let index = this._todolist.findIndex((x) => x._id === todoID);
+    this._todolist[index].changeStatus();
+    return this;
+  }
+
   get name() {
     return this._name;
   }
