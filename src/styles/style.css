@@ -41,6 +41,28 @@ li {
   cursor: pointer;
 }
 
+.deleteBtn,
+.addButton {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: none;
+  background-image: url('../assets/trash.svg');
+  vertical-align: middle;
+  background-size: cover;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.addButton {
+  background: none;
+}
+
+.addButton:hover,
+.deleteBtn:hover {
+  transform: scale(1.1);
+}
+
 /* NAV & HEADER*/
 header {
   background-color: var(--green);
@@ -210,10 +232,6 @@ nav {
   border-left: 5px solid crimson;
 }
 
-.deleteBtn {
-  cursor: pointer;
-}
-
 main {
   flex: 1;
 }
@@ -232,10 +250,16 @@ main {
 
 .todos summary {
   font-size: 1.1rem;
+  position: relative;
 }
 
 .todos details[open] summary ~ * {
   animation: sweep 1s ease-in-out;
+}
+
+.todos .deleteBtn {
+  position: absolute;
+  right: 1rem;
 }
 
 .done {
@@ -265,6 +289,46 @@ details.important {
 
 details.critical {
   border-left: 1rem solid var(--red);
+}
+
+[type='checkbox'] {
+  width: 2rem;
+  height: 2rem;
+  color: dodgerblue;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  outline: 0;
+  flex-grow: 0;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transition: background-color 300ms;
+  cursor: pointer;
+}
+
+[type='checkbox']::before {
+  content: '';
+  color: transparent;
+  display: block;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  border: 0;
+  background-color: transparent;
+  background-size: contain;
+  box-shadow: inset 0 0 0 3px #ccd3d8;
+}
+
+/* Checked */
+
+[type='checkbox']:checked {
+  background-color: currentColor;
+}
+
+[type='checkbox']:checked::before {
+  box-shadow: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cpath d='M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z' fill='%23fff'/%3E %3C/svg%3E");
 }
 
 @media (min-width: 800px) {
