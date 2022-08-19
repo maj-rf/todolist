@@ -4,87 +4,79 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="apple-touch-icon" sizes="57x57" href="../src/assets/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="../src/assets/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="../src/assets/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="../src/assets/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="../src/assets/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="../src/assets/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="../src/assets/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="../src/assets/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../src/assets/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="../src/assets/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../src/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="../src/assets/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../src/assets/favicon-16x16.png">
-    <link rel="icon" href="../src/assets/favicon.ico?" type="image/x-icon">
-    <link rel="shortcut icon" href="../src/assets/favicon.ico?" type="image/x-icon">
-    <link rel="manifest" href="../src/assets/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <title>To-do List</title>
-    <script
-      src="https://kit.fontawesome.com/dbf95a1966.js"
-      crossorigin="anonymous"
-    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <title>TO-DON'T</title>
   </head>
   <body>
-    <main>
-      <div class="burger">
-        <span class="fas fa-bars"></span>
+    <header>
+      <div>
+        <h1><img class="logo" src="../src/assets/to-do-list.png" />TO-DON'T</h1>
+        <button class="nav-toggle" aria-label="open navigation">
+          <span class="hamburger"></span>
+        </button>
       </div>
       <nav>
-        <header>Todon't: A Todo List App</header>
-        <form class="project-form">
-          <div class="project-form-input">
+        <div>
+          <form action="" id="project-form">
             <input
               type="text"
-              placeholder="Add a New Project.."
-              class="pname-input"
+              placeholder="Add a Project.."
+              class="project-name"
+              maxlength="20"
+              required
             />
-          </div>
-          <div class="project-form-input">
-            <input type="submit" class="project-submit" value="Add" />
-          </div>
-        </form>
-        <label for="project-container">Projects:</label>
-        <section class="project-container"></section>
-      </nav>
-
-      <div class="todo-wrapper">
-        <button class="modal-btn">Add Todo</button>
-        <section class="todo-form-container modal">
-          <form class="todo-form">
-            <div class="todo-form-input">
-              <input
-                type="text"
-                placeholder="Todo Name.."
-                class="todo-name-input"
-              />
-            </div>
-            <div class="todo-form-input">
-              <textarea
-                class="todo-desc-input"
-                rows="4"
-                cols="25"
-                placeholder="Description/Details.."
-              ></textarea>
-            </div>
-            <div class="todo-form-input">
-              <label for="todo-duedate-input">Deadline:</label>
-              <input type="date" class="todo-duedate-input" />
-            </div>
-            <div class="todo-form-input">
-              <input type="submit" class="todo-submit" value="Submit" />
-            </div>
-            <span class="modal-close">&times;<span/>
+            <button class="addButton" type="submit">
+              <img src="../src/assets/circle-plus.svg" alt="logo" />
+            </button>
           </form>
-        </section>
-        <section class="todo-container"></section>
-      </div>
+        </div>
+        <ul class="projects"></ul>
+      </nav>
+    </header>
+    <main>
+      <section class="todos-wrapper">
+        <div class="todos"></div>
+      </section>
     </main>
-
+    <div class="float"><button class="open-btn">+</button></div>
+    <dialog id="todo-modal">
+      <h2>Add a New Task</h2>
+      <form method="dialog" id="todo-form">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" id="title" placeholder="Groceries.." required />
+        </div>
+        <div class="form-group">
+          <label for="details">Details:</label>
+          <textarea
+            name="details"
+            id="details"
+            cols="30"
+            rows="6"
+            required="true"
+            placeholder="Buy Apple and withdraw money.."
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="due">Due:</label>
+          <input type="date" id="due" required />
+        </div>
+        <div class="form-group">
+          <label for="priority">Priority:</label>
+          <select name="priorities" id="priority">
+            <option value="critical">Critical</option>
+            <option value="important">Important</option>
+            <option value="normal" selected="selected">Normal</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+        <button type="button" value="cancel" class="cancel btn">Cancel</button>
+        <button type="submit" class="submit btn">Submit</button>
+      </form>
+    </dialog>
     <script src="main.js"></script>
   </body>
 </html>
