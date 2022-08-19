@@ -13,7 +13,7 @@
   <body>
     <header>
       <div>
-        <h1>TO-DON'T</h1>
+        <h1><img class="logo" src="../src/assets/to-do-list.png" />TO-DON'T</h1>
         <button class="nav-toggle" aria-label="open navigation">
           <span class="hamburger"></span>
         </button>
@@ -47,7 +47,7 @@
       <form method="dialog" id="todo-form">
         <div class="form-group">
           <label for="title">Title:</label>
-          <input type="text" id="title" required />
+          <input type="text" id="title" placeholder="Groceries.." required />
         </div>
         <div class="form-group">
           <label for="details">Details:</label>
@@ -57,6 +57,7 @@
             cols="30"
             rows="6"
             required="true"
+            placeholder="Buy Apple and withdraw money.."
           ></textarea>
         </div>
         <div class="form-group">

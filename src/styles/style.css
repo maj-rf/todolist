@@ -12,6 +12,7 @@
   --gray-100: hsl(0, 0%, 60%);
   --red: hsl(0, 54%, 62%);
   --green: #0c9;
+  --blue: rgb(25, 121, 200);
 }
 
 body {
@@ -35,10 +36,27 @@ li {
 }
 
 .btn {
-  padding: 0.2rem;
+  padding: 0.3rem 0.5rem;
   font-size: 1.1rem;
   text-transform: uppercase;
   cursor: pointer;
+  border: none;
+  border-radius: 1rem;
+}
+
+.submit {
+  background-color: var(--blue);
+  color: var(--white-100);
+}
+
+.cancel {
+  background-color: var(--red);
+  color: var(--white-100);
+}
+
+.submit:hover,
+.cancel:hover {
+  filter: brightness(1.2);
 }
 
 .deleteBtn,
@@ -56,6 +74,9 @@ li {
 
 .addButton {
   background: none;
+  position: absolute;
+  right: 150px;
+  top: 14px;
 }
 
 .addButton:hover,
@@ -70,6 +91,18 @@ header {
   top: 0;
   text-align: center;
   padding: 0.5rem 0;
+}
+
+h1 {
+  color: var(--white);
+}
+.logo {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  filter: invert(100%) sepia(16%) saturate(7463%) hue-rotate(222deg)
+    brightness(119%) contrast(115%);
 }
 
 .nav-toggle {
@@ -137,8 +170,12 @@ nav {
 }
 
 #project-form input {
-  padding: 0.2rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
   font-size: 1.1rem;
+  border-radius: 1rem;
+  border: none;
+  position: relative;
 }
 .project-li {
   display: flex;
@@ -224,12 +261,12 @@ nav {
   width: 100%;
   padding: 0.5rem;
   font-size: 1.1rem;
+  border: 2px solid var(--gray);
+  outline-color: var(--green);
 }
 
-#todo-form input:required,
-#todo-form textarea:required {
-  border: 1px solid var(--dark);
-  border-left: 5px solid crimson;
+#todo-form > * ::placeholder {
+  color: var(--gray-100);
 }
 
 main {
@@ -342,6 +379,10 @@ details.critical {
   }
   .nav-toggle {
     display: none;
+  }
+
+  .addButton {
+    right: 50px;
   }
 
   .project-li {
