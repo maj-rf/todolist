@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/bananabread08/todolist/issues"
   },
-  "homepage": "https://github.com/bananabread08/todolist/",
+  "homepage": "https://github.com/bananabread08/todolist#readme",
   "devDependencies": {
     "css-loader": "^6.7.1",
     "style-loader": "^3.3.1",

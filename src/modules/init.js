@@ -1,6 +1,8 @@
 import display from './display';
 import Project from './Projects';
 import Todos from './Todos';
+import addIcon from '../assets/add.svg';
+import logoIcon from '../assets/logo.png';
 
 function addProject(projects) {
   const projectForm = document.getElementById('project-form');
@@ -42,6 +44,17 @@ const init = (projects, currentProject) => {
   const navToggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('nav');
   const todoContainer = document.querySelector('.todos');
+  const heading = document.querySelector('.heading');
+  const addButton = document.querySelector('.addButton');
+  const logo = new Image();
+  const add = new Image();
+  logo.src = logoIcon;
+  logo.alt = 'todo logo';
+  add.src = addIcon;
+  add.alt = 'add icon';
+  heading.prepend(logo);
+  addButton.appendChild(add);
+  logo.classList.add('logo');
   openBtn.addEventListener('click', () => todoModal.showModal());
   cancelBtn.addEventListener('click', () => todoModal.close());
 
