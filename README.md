@@ -35,6 +35,7 @@ Built With:
 - JavaScript
 - Webpack
 - eslint/prettier
+- Icons from Icons\*
 
 # Usage / Running Project Locally
 

@@ -46,7 +46,10 @@ const display = (() => {
     const todoContent = document.createElement('div');
     const todoDue = document.createElement('p');
     const todoStatus = document.createElement('input');
+    const btnContainer = document.createElement('div');
     const btn = createBtn();
+    btnContainer.classList.add('btn-container');
+    btnContainer.append(todoStatus, btn);
     todoStatus.type = 'checkbox';
     todoStatus.name = 'status';
     todoStatus.checked = todo._status;
@@ -59,7 +62,8 @@ const display = (() => {
     todoTitle.textContent = todo._title;
     todoDue.textContent = todo._due;
     todoTitle.setAttribute('id', todo._id);
-    todoTitle.append(todoStatus, btn);
+    //todoTitle.append(todoStatus, btn);
+    todoTitle.appendChild(btnContainer);
     todoContent.appendChild(todoDue);
     todoDetails.append(todoTitle, todoContent);
     todoContainer.appendChild(todoDetails);

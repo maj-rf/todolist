@@ -65,7 +65,6 @@ li {
   border: none;
   cursor: pointer;
   background: none;
-  background-image: url('../assets/trash.svg');
   vertical-align: middle;
   background-size: cover;
   width: 1.8rem;
@@ -73,10 +72,15 @@ li {
 }
 
 .addButton {
-  background: none;
+  /* filter: invert(100%) sepia(16%) saturate(7463%) hue-rotate(222deg)
+    brightness(119%) contrast(115%); */
   position: absolute;
-  right: 150px;
-  top: 14px;
+  top: 0.8rem;
+  z-index: 1;
+}
+
+.deleteBtn {
+  background-image: url('../assets/trash.svg');
 }
 
 .addButton:hover,
@@ -91,6 +95,7 @@ header {
   top: 0;
   text-align: center;
   padding: 0.5rem 0;
+  z-index: 2;
 }
 
 h1 {
@@ -171,11 +176,12 @@ nav {
 
 #project-form input {
   margin-top: 0.5rem;
+  margin-left: -2.5rem;
+  margin-right: -2.5rem;
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
   border-radius: 1rem;
   border: none;
-  position: relative;
 }
 .project-li {
   display: flex;
@@ -276,9 +282,21 @@ main {
 .todos {
   display: flex;
   flex-direction: column;
-  margin: 2rem;
+  margin: 1rem 0;
+  padding: 0 1rem;
   gap: 0.2rem;
+  width: 100%;
 }
+
+/* details css reset */
+details summary {
+  cursor: pointer;
+}
+
+details summary > * {
+  display: inline;
+}
+
 .todos details {
   background-color: var(--white);
   padding: 1rem;
@@ -287,16 +305,17 @@ main {
 
 .todos summary {
   font-size: 1.1rem;
-  position: relative;
 }
 
 .todos details[open] summary ~ * {
   animation: sweep 1s ease-in-out;
 }
 
-.todos .deleteBtn {
-  position: absolute;
-  right: 1rem;
+.todos .btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem;
 }
 
 .done {
@@ -329,8 +348,8 @@ details.critical {
 }
 
 [type='checkbox'] {
-  width: 2rem;
-  height: 2rem;
+  width: 1.8rem;
+  height: 1.8rem;
   color: dodgerblue;
   vertical-align: middle;
   -webkit-appearance: none;
@@ -381,9 +400,9 @@ details.critical {
     display: none;
   }
 
-  .addButton {
-    right: 50px;
-  }
+  /* .addButton {
+    right: 10px;
+  } */
 
   .project-li {
     display: flex;

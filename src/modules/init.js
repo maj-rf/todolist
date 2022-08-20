@@ -92,10 +92,14 @@ const init = (projects, currentProject) => {
 
   todoContainer.addEventListener('click', (e) => {
     if (e.target.nodeName === 'BUTTON') {
-      currentProject = currentProject.deleteTodo(e.target.parentNode.id);
+      currentProject = currentProject.deleteTodo(
+        e.target.parentNode.parentNode.id
+      );
       display.renderAndSave(projects, currentProject);
     } else if (e.target.nodeName === 'INPUT') {
-      currentProject = currentProject.changeTodoStatus(e.target.parentNode.id);
+      currentProject = currentProject.changeTodoStatus(
+        e.target.parentNode.parentNode.id
+      );
       display.renderAndSave(projects, currentProject);
     }
   });
